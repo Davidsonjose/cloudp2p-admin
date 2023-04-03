@@ -16,7 +16,7 @@ function Sidebar(props: any) {
   const user = useSelector(selectUser);
   const users = useSelector(getAdmin);
   console.log(users, "here is users");
-  const { setIsSideBarVisible } = props;
+  const { setIsSideBarVisible, data } = props;
   return (
     <div className="scrollbar-hide z-50">
       {isMobileView || isTabletView ? (
@@ -79,7 +79,7 @@ function Sidebar(props: any) {
           className={`${props.isSideBarVisible} z-50 lg:block overflow-hidden h-screen scrollbar-hide`}
         >
           <div
-            className={`sidebar  z-50  fixed top-0 bottom-0 lg:left-0 p-2 lg:w-[20%] h-full overflow-y-scroll text-center bg-[#17193F] scrollbar-hide`}
+            className={`sidebar  z-50  fixed top-0 bottom-0 lg:left-0  lg:w-[18.5%] h-full overflow-y-scroll text-center bg-[#17193F] scrollbar-hide`}
           >
             <div className="h-full flex justify-between flex-col ">
               <div className="mb-8  ">
@@ -136,14 +136,65 @@ function Sidebar(props: any) {
                   />
                   <span className="py-4 text-center">Overview</span>
                 </div>
-                <div className="px-4 pt-12">
-                  {props.data.map((item: any, i: number) => (
+                {props.data.map((dats: any) => (
+                  <>
+                    <div>
+                      <p className="text-[#FFFFFF99] pb-6 font-semibold text-[10px] pt-5 flex mx-12">
+                        {dats?.category}
+                      </p>
+                    </div>
+                    {dats?.sub.map((dats: any, i: any) => (
+                      <div className="flex mx-14 pb-6 items-center space-x-4" key={i}>
+                        <Image
+                          src={dats?.icon}
+                          alt=""
+                          // height={32}
+                          // width={32}
+                          className="h-[10.06px] w-[11.37px] self-center rounded-full cursor-pointer "
+                        />
+                        <h3 className="text-white text-[14px]">{dats?.title}</h3>
+                      </div>
+                    ))}
+                  </>
+                ))}
+                {/* <div className="flex mx-14 pb-6 items-center space-x-4">
+                  <Image
+                    src={COMPANY_LOGO}
+                    alt=""
+                    // height={32}
+                    // width={32}
+                    className="h-[10.06px] w-[11.37px] self-center rounded-full cursor-pointer "
+                  />
+                  <h3 className="text-white text-[14px]">Send & Receive</h3>
+                </div>
+                <div className="flex mx-14 pb-6 items-center space-x-4">
+                  <Image
+                    src={COMPANY_LOGO}
+                    alt=""
+                    // height={32}
+                    // width={32}
+                    className="h-[10.06px] w-[11.37px] self-center rounded-full cursor-pointer "
+                  />
+                  <h3 className="text-white text-[14px]">Swap Transactions</h3>
+                </div> */}
+                {/* <div className="flex mx-14 pb-6 items-center space-x-4">
+                  <Image
+                    src={COMPANY_LOGO}
+                    alt=""
+                    // height={32}
+                    // width={32}
+                    className="h-[10.06px] w-[11.37px] self-center rounded-full cursor-pointer "
+                  />
+                  <h3 className="text-white text-[14px]">KYC</h3>
+                </div> */}
+                <div className="px-4 ">
+                  {/* {props.data.map((item: any, i: number) => (
                     <ItemMenu
                       data={item}
                       key={i}
                       setIsSideBarVisible={setIsSideBarVisible}
                     />
-                  ))}
+                  ))} */}
                 </div>
               </div>
             </div>

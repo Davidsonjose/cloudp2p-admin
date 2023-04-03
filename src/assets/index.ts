@@ -12,8 +12,15 @@ export { default as SETTINGS } from './icons/setting.svg';
 export { default as USER } from './icons/user.svg';
 export { default as VISITOR } from './icons/visitor.svg';
 export { default as HOME } from './icons/home.svg';
-export { default as COMPANY_LOGO } from "./log/companylogo.svg"
-export { default as OVERVIEW } from "./icons/overview.svg"
+export { default as COMPANY_LOGO } from "./log/companylogo.svg";
+export { default as OVERVIEW } from "./icons/overview.svg";
+export { default as USERS } from "./icons/users.svg";
+export { default as SEND } from "./icons/send.svg";
+export { default as SWAP } from "./icons/swap.svg";
+export { default as KYC } from "./icons/kyc.svg";
+export { default as ADDUSER } from "./icons/adduser.svg";
+export { default as SETTING  } from "./icons/settings.svg";
+
 //admin-icon
 export const Avater = require('./icons/avatar.png');
 export { default as ICON_1 } from './icons/home-svg-1.svg';

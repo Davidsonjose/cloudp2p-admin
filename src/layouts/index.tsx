@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Sidebar from "@/components/siderbar";
-import { admin, manager } from "./data";
+import { admin, manager, mainadmin } from "./data";
 import { Avater } from "@/assets";
 import { BsBell } from "react-icons/bs";
 import { VscThreeBars } from "react-icons/vsc";
@@ -11,6 +11,7 @@ import axios from "axios";
 import API_URL from "@/config";
 import { getAdminToken, getUser } from "@/common";
 // import { useNavigate } from "react-router-dom";
+import Image from "next/image";
 
 interface mainLayoutTypes {
   children: JSX.Element;
@@ -53,45 +54,30 @@ function MainLayout({ children }: mainLayoutTypes) {
     }
   }
 
-  const notification = [] as any;
+  const notification = [
+    { notificationtype: "Thire", notificationtitle: "Transfer received", message: "This is an important message" },
+  ] as any;
 
   // console.log(socket)
   return (
     <div className="w-screen  relative  h-screen flex justify-between">
       <Sidebar
-        data={users?.role === "admin" ? admin : manager}
+        data={mainadmin}
         isSideBarVisible={isSideBarVisible}
         openSidebar={openSidebar}
         open={open}
         setIsSideBarVisible={setIsSideBarVisible}
       />
       <div
-        className="h-full w-full lg:w-[80%] bg-[#F2ECEC] overflow-auto [@media(max-width:767px)]:scrollbar-hide "
+        className="h-full w-full lg:w-[81.5%] bg-[#FFFFFF] overflow-auto [@media(max-width:767px)]:scrollbar-hide "
         onClick={handleClose}
       >
-        <div className="  bg-[#F2ECEC]  sticky top-0 z-20  rounded-b-2xl h-12 flex justify-between  items-center shadow-header  py-8 px-6 lg:px-10">
+        <div className="  bg-[#FFFFFF]  sticky top-0 z-20  rounded-b-2xl h-12 flex justify-between  items-center shadow-header  py-10 px-6 lg:px-10">
           <div className="shadow-header   block lg:hidden rounded-full p-2 bg-black cursor-pointer">
             <VscThreeBars color="#ffffff" className="" onClick={openSidebar} />
           </div>
-          {currentUser?.firstname && (
-            <div className="">
-              {currentUser?.role === "manager" ? (
-                <>
-                  <span>{"Welcome back, "}</span>{" "}
-                  <span className="font-bold capitalize">
-                    {currentUser?.firstname}
-                  </span>
-                </>
-              ) : (
-                <>
-                  <span>{"Welcome back, "}</span>{" "}
-                  <span className="font-bold capitalize">
-                    {currentUser?.role}
-                  </span>
-                </>
-              )}
-            </div>
-          )}
+
+          <h3>Good Morning</h3>
           <div>
             <div className="flex justify-center items-center">
               <div className="flex">
@@ -152,7 +138,7 @@ function MainLayout({ children }: mainLayoutTypes) {
                         //   key={data?.id}
                       >
                         <div className="flex items-center justify-between space-x-5">
-                          <img
+                          <Image
                             src={Avater}
                             alt="imag"
                             className="profile-pic rounded-full w-10 h-10"
