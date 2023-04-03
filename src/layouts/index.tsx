@@ -261,7 +261,7 @@ function MainLayout({ children }: mainLayoutTypes) {
             </div>
           )}
         </div>
-        <div className="lg:p-10 bg-[#5A5A5A] z-0">{children}</div>
+        <div className="lg:p-10 bg-[#FAFAFA] z-0">{children}</div>
       </div>
     </div>
   );
