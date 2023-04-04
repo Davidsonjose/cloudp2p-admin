@@ -49,11 +49,11 @@ function AnalyticWidget() {
   return (
     <div className="mt-6 bg-white rounded-lg">
       <div className="p-4">
-        <div className="flex items-center space-x-4 z-10">
+        <div className="flex flex-col md:flex-row mb-4 lg:mb-0 items-center space-x-0 lg:space-x-4 md:space-x-4  z-10">
           {widgetdata?.map((data, index) => (
             <div
               key={index}
-              className="border  relative w-full h-[130px] z-10  border-gray-200 rounded-lg"
+              className="border relative mb-4 lg:mb-0 w-full h-[130px] z-10  border-gray-200 rounded-lg"
             >
               <div className="px-3 mt-5">
                 <h3 className="font-semibold text-[#141414B2] text-[10px] uppercase">
