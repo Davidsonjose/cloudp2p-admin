@@ -1,5 +1,5 @@
 import { Menu, Transition } from "@headlessui/react";
-import { Avater } from "@/assets";
+import { Avater, Avatars } from "@/assets";
 import { removeAdminSession } from "@/common";
 import { selectUser } from "@/features/auth/api/slice";
 import { useAppSelector } from "@/hooks";
@@ -7,7 +7,7 @@ import { Fragment } from "react";
 import { FaChevronDown, FaStreetView } from "react-icons/fa";
 import { FcHome } from "react-icons/fc";
 import { HiOutlineLogout } from "react-icons/hi";
-
+import Image from "next/image";
 import { useDispatch } from "react-redux";
 // import { useNavigate } from "react-router-dom";
 
@@ -35,12 +35,7 @@ export function Dropdown(props: dropdownTypes) {
       <Menu as='div' className='relative inline-block text-left'>
         <div>
           <Menu.Button className='inline-flex w-full justify-center items-center rounded-md px-4 py-2 text-sm font-medium text-black hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75'>
-            {/* {currentUser.photoUri !== null || undefined ? (
-              <img src={currentUser.photoUri} className={'h-12 w-12 z-30 rounded-full'} />
-              ) : (
-                <img src={Avater} alt='' className='rounded-full w-10 h-10 ml-4' />
-              )} */}
-            <img src={Avater} alt='' className='rounded-full w-10 h-10 ml-4' />
+            <Image src={Avatars} alt='' className='rounded-full w-8 h-8' />
             <FaChevronDown
               className='ml-2 mr-1 h-5 w-5 hover:text-[#F59E0B] text-black'
               aria-hidden='true'

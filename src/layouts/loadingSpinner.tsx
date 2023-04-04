@@ -1,9 +1,4 @@
-// import AuthWrapper from 'components/wrappers/auth-wrapper';
 import { useForm } from "react-hook-form";
-// import Input from 'components/form-control/input';
-import { LOGO } from "@/assets";
-import { BALOSH } from "@/assets";
-// import { useNavigate } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import { CircularProgress, Dialog } from "@mui/material";
 

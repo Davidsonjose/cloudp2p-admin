@@ -28,6 +28,9 @@ export interface ToastProps {
 	error: string | null,
 	success: string | null
 }
+export interface AppBar {
+	user: any;
+}
 
 // export interface ErrorToastProps {
 // 	text: string,

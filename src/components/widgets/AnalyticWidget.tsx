@@ -1,4 +1,4 @@
-import { analyticsWidgetProps } from 'interface';
+import { analyticsWidgetProps } from '@/interface';
 
 function AnalyticWidget(props: analyticsWidgetProps) {
 	return (
