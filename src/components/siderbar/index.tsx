@@ -1,4 +1,4 @@
-import { LOGO, COMPANY_LOGO, OVERVIEW } from "@/assets";
+import { COMPANY_LOGO, OVERVIEW } from "@/assets";
 import ItemMenu from "./item-menu";
 import { AiOutlineClose } from "react-icons/ai";
 // import { Link, useNavigate } from "react-router-dom";
@@ -37,38 +37,55 @@ function Sidebar(props: any) {
               className={`sidebar z-50 fixed w-[300px] top-0 bottom-0 lg:left-0 p-2 lg:w-[20%] h-full overflow-y-auto text-center bg-white`}
             >
               <div className="h-full flex justify-between flex-col ">
-                <div className="mb-8">
-                  <div className="text-gray-100 text-xl sticky top-0 z-50 bg-white  dark:text-white">
-                    <div className="relative">
-                      <div className="flex items-center justify-center py-6">
-                        <Image
-                          src={LOGO}
-                          alt=""
-                          height={32}
-                          width={32}
-                          className="w-32 h-32 self-center rounded-full cursor-pointer "
-                        />
-                        <div className="w-32 h-32 self-center rounded-full shadow-logo absolute animate-spin"></div>
+                <div className="mb-8  ">
+                  <div className="flex space-x-4 mt-5 justify-center items-center">
+                    <Image
+                      src={COMPANY_LOGO}
+                      alt=""
+                      // height={32}
+                      // width={32}
+                      className="h-20 w-12 self-center rounded-full cursor-pointer "
+                    />
+                    <h4 className="text-white text-[18px] font-semibold">
+                      CloudP2P
+                    </h4>
+                  </div>
+                  <div className="bg-[#E9EAFF] mt-10 flex items-center px-14 space-x-4">
+                    <Image
+                      src={OVERVIEW}
+                      alt=""
+                      // height={32}
+                      // width={32}
+                      className="h-5 w-5 self-center rounded-full cursor-pointer "
+                    />
+                    <span className="py-4 text-center">Overview</span>
+                  </div>
+                  {props.data.map((dats: any) => (
+                    <>
+                      <div>
+                        <p className="text-[#FFFFFF99] pb-6 font-semibold text-[10px] pt-5 flex mx-12">
+                          {dats?.category}
+                        </p>
                       </div>
-                    </div>
-
-                    <div className="shadow-header  absolute top-3 right-2  block lg:hidden rounded-full p-2 bg-black cursor-pointer">
-                      <AiOutlineClose
-                        color="#ffffff"
-                        className=""
-                        onClick={props.openSidebar}
-                      />
-                    </div>
-                  </div>
-                  <div className="pt-12">
-                    {props.data.map((item: any, i: number) => (
-                      <ItemMenu
-                        data={item}
-                        key={i}
-                        setIsSideBarVisible={setIsSideBarVisible}
-                      />
-                    ))}
-                  </div>
+                      {dats?.sub.map((dats: any, i: any) => (
+                        <div
+                          className="flex mx-14 pb-6 items-center space-x-4"
+                          key={i}
+                        >
+                          <Image
+                            src={dats?.icon}
+                            alt=""
+                            // height={32}
+                            // width={32}
+                            className="h-[10.06px] w-[11.37px] self-center rounded-full cursor-pointer "
+                          />
+                          <h3 className="text-white text-[14px]">
+                            {dats?.title}
+                          </h3>
+                        </div>
+                      ))}
+                    </>
+                  ))}
                 </div>
               </div>
             </div>
@@ -83,37 +100,6 @@ function Sidebar(props: any) {
           >
             <div className="h-full flex justify-between flex-col ">
               <div className="mb-8  ">
-                {/* <div className="text-gray-100 text-xl sticky top-0 z-50 bg-white ">
-                  <div className="relative">
-                    <div className="flex items-center justify-center py-6">
-                      <Image
-                        src={LOGO}
-                        alt=""
-                        // height={32}
-                        // width={32}
-                        className="w-32 h-32 self-center rounded-full cursor-pointer "
-                      />
-                      <div className="w-32 h-32 self-center rounded-full shadow-logo absolute animate-spin"></div>
-                    </div>
-                  </div>
-                  {user && (
-                    <span className="text-gray-600 capitalize text-base font-bold">
-                      {user?.role === "admin"
-                        ? user.role
-                        : "Enterprise Manager"}
-                      <br />
-                      {user?.role === "manager" && `${user?.company?.name}`}
-                    </span>
-                  )}
-
-                  <div className="shadow-header  absolute top-3 right-2  block lg:hidden rounded-full p-2 bg-black cursor-pointer">
-                    <AiOutlineClose
-                      color="#ffffff"
-                      className=""
-                      onClick={props.openSidebar}
-                    />
-                  </div>
-                </div> */}
                 <div className="flex space-x-4 mt-5 justify-center items-center">
                   <Image
                     src={COMPANY_LOGO}
@@ -144,7 +130,10 @@ function Sidebar(props: any) {
                       </p>
                     </div>
                     {dats?.sub.map((dats: any, i: any) => (
-                      <div className="flex mx-14 pb-6 items-center space-x-4" key={i}>
+                      <div
+                        className="flex mx-14 pb-6 items-center space-x-4"
+                        key={i}
+                      >
                         <Image
                           src={dats?.icon}
                           alt=""
@@ -152,50 +141,13 @@ function Sidebar(props: any) {
                           // width={32}
                           className="h-[10.06px] w-[11.37px] self-center rounded-full cursor-pointer "
                         />
-                        <h3 className="text-white text-[14px]">{dats?.title}</h3>
+                        <h3 className="text-white text-[14px]">
+                          {dats?.title}
+                        </h3>
                       </div>
                     ))}
                   </>
                 ))}
-                {/* <div className="flex mx-14 pb-6 items-center space-x-4">
-                  <Image
-                    src={COMPANY_LOGO}
-                    alt=""
-                    // height={32}
-                    // width={32}
-                    className="h-[10.06px] w-[11.37px] self-center rounded-full cursor-pointer "
-                  />
-                  <h3 className="text-white text-[14px]">Send & Receive</h3>
-                </div>
-                <div className="flex mx-14 pb-6 items-center space-x-4">
-                  <Image
-                    src={COMPANY_LOGO}
-                    alt=""
-                    // height={32}
-                    // width={32}
-                    className="h-[10.06px] w-[11.37px] self-center rounded-full cursor-pointer "
-                  />
-                  <h3 className="text-white text-[14px]">Swap Transactions</h3>
-                </div> */}
-                {/* <div className="flex mx-14 pb-6 items-center space-x-4">
-                  <Image
-                    src={COMPANY_LOGO}
-                    alt=""
-                    // height={32}
-                    // width={32}
-                    className="h-[10.06px] w-[11.37px] self-center rounded-full cursor-pointer "
-                  />
-                  <h3 className="text-white text-[14px]">KYC</h3>
-                </div> */}
-                <div className="px-4 ">
-                  {/* {props.data.map((item: any, i: number) => (
-                    <ItemMenu
-                      data={item}
-                      key={i}
-                      setIsSideBarVisible={setIsSideBarVisible}
-                    />
-                  ))} */}
-                </div>
               </div>
             </div>
           </div>
