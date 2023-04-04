@@ -104,7 +104,7 @@ function AnalyticGraph() {
   return (
     <>
       <div className="mt-10">
-        <div className="flex space-x-5 justify-between">
+        <div className="flex space-x-5 pb-7 justify-between">
           <div className="bg-white rounded-lg w-full">
             <div className="flex items-center justify-between m-5">
               <h4 className="">Total Payments</h4>
@@ -207,6 +207,128 @@ function AnalyticGraph() {
                   type="monotone"
                   dataKey="pv"
                   stroke="#00FF00"
+                  fill="#fff"
+                />
+                {/* <Line
+                  type="monotone"
+                  data={data2}
+                  dataKey="uv"
+                  stroke="#FF0000"
+                /> */}
+                {/* <Area
+                  type="monotone"
+                  data={data2}
+                //   dataKey="uv"
+                //   stroke="#FF0000"
+                //   fill="url(#colorUv)"
+                /> */}
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+        <div className="flex space-x-5 mb-4 justify-between">
+        <div className="bg-white rounded-lg w-full">
+            <div className="flex items-center justify-between m-5">
+              <h4 className="">Registered Users</h4>
+              <div>
+                <select
+                  id="countries"
+                  className="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-black dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                  <option selected>This week</option>
+                  <option value="US">last month</option>
+                  <option value="CA">last year</option>
+                </select>
+              </div>
+            </div>
+
+            <ResponsiveContainer width="100%" height="100%" aspect={3}>
+              <AreaChart
+                width={700}
+                height={600}
+                data={data}
+                margin={{ top: 5, right: 30, left: 0, bottom: 0 }}
+              >
+                <defs>
+                  <linearGradient id="colorUhy" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="15%" stopColor="#0C46D3" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="#0C46D3" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <CartesianGrid vertical={false} strokeWidth={0.2} />
+                {/* <XAxis axisLine={false} tickLine={false} /> */}
+                <YAxis tickCount={8} axisLine={false} tickLine={false} />
+                <Tooltip />
+                <Area
+                  type="monotone"
+                  dataKey="uv"
+                  stroke="#0C46D3"
+                  fill="url(#colorUhy)"
+                />
+                <Area
+                  type="monotone"
+                  dataKey="pv"
+                  stroke="#0C46D3"
+                  fill="#fff"
+                />
+                {/* <Line
+                  type="monotone"
+                  data={data2}
+                  dataKey="uv"
+                  stroke="#FF0000"
+                /> */}
+                {/* <Area
+                  type="monotone"
+                  data={data2}
+                //   dataKey="uv"
+                //   stroke="#FF0000"
+                //   fill="url(#colorUv)"
+                /> */}
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+          <div className="bg-white rounded-lg w-full">
+            <div className="flex items-center justify-between m-5">
+              <h4 className="">Logged in</h4>
+              <div>
+                <select
+                  id="countries"
+                  className="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-black dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                  <option selected>This week</option>
+                  <option value="US">last month</option>
+                  <option value="CA">last year</option>
+                </select>
+              </div>
+            </div>
+
+            <ResponsiveContainer width="100%" height="100%" aspect={3}>
+              <AreaChart
+                width={700}
+                height={600}
+                data={data}
+                margin={{ top: 5, right: 30, left: 0, bottom: 0 }}
+              >
+                <defs>
+                  <linearGradient id="colorUhk" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="15%" stopColor="#FFA500" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="#FFA500" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <CartesianGrid vertical={false} strokeWidth={0.2} />
+                {/* <XAxis axisLine={false} tickLine={false} /> */}
+                <YAxis tickCount={8} axisLine={false} tickLine={false} />
+                <Tooltip />
+                <Area
+                  type="monotone"
+                  dataKey="uv"
+                  stroke="#FFA500"
+                  fill="url(#colorUhk)"
+                />
+                <Area
+                  type="monotone"
+                  dataKey="pv"
+                  stroke="#FFA500"
                   fill="#fff"
                 />
                 {/* <Line
