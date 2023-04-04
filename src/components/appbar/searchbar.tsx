@@ -5,7 +5,7 @@ import Image from "next/image";
 function SearchBar() {
   return (
     <>
-      <div className="relative">
+      <div className="relative hidden lg:block md:hidden">
         <input
           type="search"
           id="default-search"
