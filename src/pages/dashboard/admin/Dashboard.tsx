@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import { getAdminToken } from "@/common";
 import AnalyticWidget from "@/features/dashboard/analyticwidget";
 import AnalyticGraph from "@/features/dashboard/analyticgraph";
+import UserTable from "@/components/table/userdashboard";
 const barData = [
   {
     name: "Jan",
@@ -54,37 +55,60 @@ const barData = [
 
 function Dashboard() {
   const token = getAdminToken();
-  
-  const data = [
+
+  const columns = [
     {
-      name: "Mon",
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
+      name: "Name",
+      selector: (row: any) => (
+        <div className="flex items-center space-x-2">
+          <p className="2xl bg-blue-600  rounded-full">
+            <i className="fa-solid fa-user p-3 text-white"></i>
+          </p>
+          <p className="font-bold w-[200px]">{row.username}</p>
+        </div>
+      ),
+      sortable: true,
     },
     {
-      name: "Tue",
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
+      name: "Phone number",
+      selector: (row: any) => row.phone,
     },
     {
-      name: "Wed",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
+      name: "Email Address",
+      selector: (row: any) => row.email,
     },
     {
-      name: "Thu",
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
+      name: "KYC Level",
+      selector: (row: any) => row.kyc,
     },
     {
-      name: "Fri",
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
+      name: "Date Registered",
+      selector: (row: any) => row.kyc,
+    },
+    {
+      name: "Action",
+      selector: (row: any) => (
+        <div>
+          <></>
+        </div>
+      ),
+    },
+  ];
+
+  const userdetails = [
+    {
+      username: "Davidson Jose",
+      phone: "(234) 900 000 000",
+      email: "davidsonjose313@gmail.com",
+      kyc: "KYC 3",
+      date: "09/04/2023",
+    },
+    {
+      username: "Obiabo Emmanuel",
+      phone: "(234) 900 000 000",
+      email: "resmente313@gmail.com",
+      kyc: "KYC 3",
+      date: "09/10/2023",
     },
   ];
 
@@ -100,6 +124,7 @@ function Dashboard() {
       </div>
       <AnalyticWidget />
       <AnalyticGraph />
+      <UserTable columns={columns} userdetails={userdetails} />
     </div>
   );
 }
