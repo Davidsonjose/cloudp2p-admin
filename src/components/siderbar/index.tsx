@@ -146,7 +146,7 @@ function Sidebar(props: any) {
                       <div
                         key={i}
                         onClick={() => {
-                          setActive("");
+                          // setActive("");
                           navigate.push(`${dats.path}`);
                         }}
                         className="cursor-pointer"
