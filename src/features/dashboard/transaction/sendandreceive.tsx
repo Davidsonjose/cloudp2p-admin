@@ -1,38 +1,61 @@
 import React from "react";
-import UserTable from "@/components/table/mainuser";
+import Transactiontable from "@/components/table/transactions/sendandreceive";
 import HeaderWidget from "@/components/widgets/HeaderWidget";
 function SendAndReceive() {
   const columns = [
     {
-      name: "Name",
+      name: "User ID",
       selector: (row: any) => (
         <div className="flex items-center space-x-2 w-[300px]">
           <div
-            className={`bg-${row.color}-600 h-[40px] w-[40px]  rounded-full flex justify-center items-center`}
+            className={`bg-${row.color}-600 h-[26px] w-[26px]  rounded-full flex justify-center items-center`}
           >
-            <h3 className="text-white text-center text-[16px] font-bold">
+            <h3 className="text-white text-center text-[10px] font-bold">
               {row.avater}
             </h3>
           </div>
-          <p className="font-bold w-[200px]">{row.username}</p>
+          <p className="font-semibold text-[10px] uppercase">{row.userid}</p>
         </div>
       ),
       sortable: true,
     },
     {
-      name: "Phone number",
-      selector: (row: any) => row.phone,
+      name: "Type",
+      selector: (row: any) => row.type,
+    },
+    {
+      name: "Status",
+      selector: (row: any) => (
+        <button
+          className={`py-1 px-4 rounded ${
+            row.status === "success" && "bg-[#3AB83A1A] text-green-800"
+          } ${
+            row.status === "pending" &&
+            "bg-[#F7931A1A] text-[#F7931A] text-[12px] font-semibold"
+          } capitalize`}
+        >
+          {row.status}
+        </button>
+      ),
     },
     {
       name: "Email Address",
       selector: (row: any) => row.email,
     },
     {
-      name: "KYC Level",
-      selector: (row: any) => row.kyc,
+      name: "Address",
+      selector: (row: any) => row.address,
     },
     {
-      name: "Date Registered",
+      name: "Fee",
+      selector: (row: any) => row.fee,
+    },
+    {
+      name: "Sender ID",
+      selector: (row: any) => row.senderid,
+    },
+    {
+      name: "Date",
       selector: (row: any) => row.date,
     },
     {
@@ -55,6 +78,12 @@ function SendAndReceive() {
       date: "09/04/2023",
       color: "green",
       avater: "AB",
+      userid: "gtyueiwoos",
+      type: "Receive",
+      status: "success",
+      address: "ipayex.eth",
+      fee: "0.034",
+      senderid: "hsjjkajsss",
     },
     {
       username: "Obiabo",
@@ -64,12 +93,18 @@ function SendAndReceive() {
       date: "09/10/2023",
       color: "red",
       avater: "DA",
+      userid: "dtryuiiopw",
+      type: "Send",
+      status: "pending",
+      address: "ipayex.eth",
+      fee: "0.034",
+      senderid: "hsjjkajsss",
     },
   ];
   return (
     <div className="">
       <HeaderWidget title="Transactions" />
-      <UserTable columns={columns} userdetails={userdetails} />
+      <Transactiontable columns={columns} userdetails={userdetails} />
     </div>
   );
 }
