@@ -112,14 +112,14 @@ function Login() {
   // }, [message2]);
 
   useEffect(() => {
-    const isremember = localStorage.getItem("remember");
-    const email = localStorage.getItem("email");
-    // alert(email)
-    const pass = localStorage.getItem("pass");
-    if (isremember === "yes") {
-      setValue("password", pass);
-      setValue("email", email);
-    }
+    // const isremember = localStorage.getItem("remember");
+    // const email = localStorage.getItem("email");
+    // // alert(email)
+    // const pass = localStorage.getItem("pass");
+    // if (isremember === "yes") {
+    //   setValue("password", pass);
+    //   setValue("email", email);
+    // }
   }, []);
   return (
     <>

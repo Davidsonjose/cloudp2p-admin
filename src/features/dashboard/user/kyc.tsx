@@ -74,7 +74,7 @@ function KycUser() {
       email: "davidsonjose313@gmail.com",
       kyc: "KYC 3",
       date: "09/04/2023",
-      color: "green",
+      color: "red",
       avater: "AB",
       userid: "gtyueiwoos",
       type: "Receive",
@@ -105,7 +105,7 @@ function KycUser() {
     <div className="">
       <HeaderWidget title="User KYC" />
       <div>
-    
+
         <KycTable
           show2={show}
           setShow2={setShow}

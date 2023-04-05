@@ -6,13 +6,13 @@ import DataTable from "react-data-table-component";
 import { SORT, Search } from "@/assets";
 import Image from "next/image";
 import { Fade } from "react-reveal";
-
+import KycPop from "@/features/dashboard/user/userkycpopup";
 interface mainLayoutTypes {
   children: JSX.Element;
 }
 
 function UserKyc(props: any) {
-  const {} = props;
+  const { show2, setShow2, data, setData } = props;
   const [show, setShow] = useState(false);
 
   const handleSort = () => {
@@ -27,7 +27,7 @@ function UserKyc(props: any) {
     <div className="" onClick={() => handleOverlay()}>
       <div className="mt-10 lg:flex lg:mx-0 mx-4 justify-between items-center mb-5">
         <div>
-          <h3 className="font-bold text-lg">Users</h3>
+          <h3 className="font-bold text-lg">User KYC</h3>
         </div>
         <div className="lg:mt-0 mt-4 relative flex justify-between space-x-5">
           <div className="relative">
@@ -59,9 +59,6 @@ function UserKyc(props: any) {
                   </p>
                   <div className="border-b border-gray-100"></div>
                   <p className="cursor-pointer px-3 pt-2 pb-2 text-[10px] text-[#141414]">
-                    Status
-                  </p>
-                  <p className="cursor-pointer px-3 pt-2 pb-2 text-[10px] text-[#141414]">
                     Date
                   </p>
                   <p className="cursor-pointer px-3 pt-2 text-[10px] text-[#141414] pb-5">
@@ -73,6 +70,14 @@ function UserKyc(props: any) {
           )}
         </div>
       </div>
+      <div className="relative">
+        <KycPop
+          show={show2}
+          setShow={setShow2}
+          datas={data}
+          setDatas={setData}
+        />
+      </div>
       <DataTable
         columns={props.columns}
         data={props.userdetails}
@@ -82,6 +87,7 @@ function UserKyc(props: any) {
         highlightOnHover
       />
       {show && <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>}
+      {show2 && <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>}
     </div>
   );
 }

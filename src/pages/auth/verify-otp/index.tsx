@@ -48,9 +48,9 @@ function VerifyOtp() {
         //     refreshtoken: data?.refreshToken,
         //   })
         // );
-        dispatch(setRefreshToken(data?.refreshToken));
-        dispatch(setToken(data?.accessToken));
-        dispatch(setUser(data?.payload[0]));
+        // dispatch(setRefreshToken(data?.refreshToken));
+        // dispatch(setToken(data?.accessToken));
+        // dispatch(setUser(data?.payload[0]));
         setTimeout(() => {
           //   setLoading(!loading);
           setMessage2("Please wait while we redirect you");
