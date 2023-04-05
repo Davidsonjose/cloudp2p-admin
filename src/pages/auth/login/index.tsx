@@ -5,7 +5,7 @@ import axios from "axios";
 import API_URL from "@/config";
 import { useDispatch, useSelector } from "react-redux";
 import { setAdminSession, } from "@/common";
-import { setRefreshToken, setToken, setUser } from "../api/slice";
+import { setRefreshToken, setToken, setUser } from "../../../features/api/slice";
 import { CircularProgress } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import HeadWidget from "@/components/widgets/HeaderWidget";

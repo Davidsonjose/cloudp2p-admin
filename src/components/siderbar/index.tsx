@@ -118,7 +118,8 @@ function Sidebar(props: any) {
                 <div
                   className={`${
                     active === "home" ? "bg-[#E9EAFF] " : ""
-                  } mt-10 flex items-center px-14 space-x-4`}
+                  } mt-10 flex items-center px-14 space-x-4 cursor-pointer`}
+                  onClick={() => navigate.push("/dashboard/admin")}
                 >
                   <Image
                     src={OVERVIEW}

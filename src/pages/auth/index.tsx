@@ -1,7 +1,7 @@
 import MainLayout from '@/layouts';
 
 import { useSelector } from 'react-redux';
-import { selectUser } from '../auth/api/slice';
+import { selectUser } from '../../features/api/slice';
 function AuthRoutes() {
 	const user = useSelector(selectUser);
 	return (

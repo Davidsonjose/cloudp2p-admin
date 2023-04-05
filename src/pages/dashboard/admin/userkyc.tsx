@@ -5,7 +5,7 @@ import Dashboard from "../../../features/dashboard/admin/Dashboard";
 
 import { useSelector } from "react-redux";
 // import { userData } from "../src/store/reducer/authReducer";
-import { selectUser } from "../../auth/api/slice";
+import { selectUser } from "../../../features/api/slice";
 import { useEffect, useState } from "react";
 import HeaderWidget from "@/components/widgets/HeaderWidget";
 import KycComponent from "@/features/dashboard/user/kyc"
