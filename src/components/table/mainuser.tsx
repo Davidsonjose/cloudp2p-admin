@@ -1,7 +1,11 @@
 // import AuthWrapper from 'components/wrappers/auth-wrapper';
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 // import Input from 'components/form-control/input';
 import DataTable from "react-data-table-component";
+import { SORT, Search } from "@/assets";
+import Image from "next/image";
+import { Fade } from "react-reveal";
 
 interface mainLayoutTypes {
   children: JSX.Element;
@@ -9,31 +13,64 @@ interface mainLayoutTypes {
 
 function MainUser(props: any) {
   const {} = props;
+  const [show, setShow] = useState(false);
+
+  const handleSort = () => {
+    setShow(!show);
+  };
+  const handleOverlay = () => {
+    if (show) {
+      setShow(false);
+    }
+  };
   return (
-    <>
+    <div className="" onClick={() => handleOverlay()}>
       <div className="mt-10 lg:flex lg:mx-0 mx-4 justify-between items-center mb-5">
         <div>
-          <h3 className="font-bold text-lg">Recent Users</h3>
+          <h3 className="font-bold text-lg">Users</h3>
         </div>
-        <div className="lg:mt-0 mt-4 flex justify-between space-x-5">
-          <input
-            type="text"
-            placeholder="Search here"
-            className="w-50 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-gray-600 p-3 dark:placeholder-gray-900 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            //   onChange={(e) => setSearch(e.target.value)}
-            //   value={search}
-          />
-          <div className="flex items-center space-x-2">
-            <span className="text-gray-400">Sort</span>
-            <select
-              id="countries"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            >
-              <option selected>Date Registered</option>
-              <option value="manager">KYC Level 0-3</option>
-              <option value="user">KYC Level 3-1</option>
-            </select>
+        <div className="lg:mt-0 mt-4 relative flex justify-between space-x-5">
+          <div className="relative">
+            <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+              <Image src={Search} alt="search" />
+            </div>
+            <input
+              type="search"
+              id="default-search"
+              className="block py-2 pl-12 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-gray-100 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Search"
+              required
+            />
           </div>
+          <button
+            className="justify-center flex items-center space-x-3 bg-[#17193F0D] py-2 px-5 text-sm rounded-lg"
+            onClick={() => handleSort()}
+          >
+            {/* <i className="fa-solid fa-flask"></i> */}
+            <Image src={SORT} alt="sort" />
+            <p className="text-[16px]">Sort</p>
+          </button>
+          {show && (
+            <Fade>
+              <div className="bg-[#FFFFFF] w-[130px] absolute left-[50%] top-[100%] z-[50] rounded-lg">
+                <div className="">
+                  <p className=" px-3 pt-2 pb-2 text-[10px] font-semibold text-[#141414]">
+                    Sort By
+                  </p>
+                  <div className="border-b border-gray-100"></div>
+                  <p className=" px-3 pt-2 pb-2 text-[10px] text-[#141414]">
+                    Date registered
+                  </p>
+                  <p className="px-3 pt-2 pb-2 text-[10px] text-[#141414]">
+                    KYC Level 0-3
+                  </p>
+                  <p className="px-3 pt-2 text-[10px] text-[#141414] pb-5">
+                    KYC Level 0-3
+                  </p>
+                </div>
+              </div>
+            </Fade>
+          )}
         </div>
       </div>
       <DataTable
@@ -63,7 +100,8 @@ function MainUser(props: any) {
         //   </div>
         // }
       />
-    </>
+      {show && <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>}
+    </div>
   );
 }
 

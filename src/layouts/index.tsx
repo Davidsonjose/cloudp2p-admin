@@ -63,7 +63,7 @@ function MainLayout({ children }: mainLayoutTypes) {
     setView(!view);
   };
   return (
-    <div className="w-screen  relative  h-screen flex justify-between">
+    <div className="w-screen  relative   h-screen flex justify-between">
       <Sidebar
         data={mainadmin}
         isSideBarVisible={isSideBarVisible}
@@ -72,7 +72,7 @@ function MainLayout({ children }: mainLayoutTypes) {
         setIsSideBarVisible={setIsSideBarVisible}
       />
       <div
-        className="h-full w-full lg:w-[81.5%] bg-[#FFFFFF] overflow-auto [@media(max-width:767px)]:scrollbar-hide "
+        className="h-full  w-full lg:w-[81.5%] bg-[#FFFFFF] overflow-auto [@media(max-width:767px)]:scrollbar-hide "
         onClick={handleClose}
       >
         <AppBar

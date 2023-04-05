@@ -1,5 +1,6 @@
 import React from "react";
 import UserTable from "@/components/table/mainuser";
+import HeaderWidget from "@/components/widgets/HeaderWidget";
 function MainUser() {
   const columns = [
     {
@@ -66,9 +67,10 @@ function MainUser() {
     },
   ];
   return (
-    <>
+    <div className="">
+      <HeaderWidget title="Admin All Users" />
       <UserTable columns={columns} userdetails={userdetails} />
-    </>
+    </div>
   );
 }
 

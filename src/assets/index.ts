@@ -19,6 +19,7 @@ export { default as Avatars } from "./icons/avatar.svg"
 export { default as Search } from "./icons/search.svg"
 export { default as Payment } from "./icons/payments.svg"
 export { default as PaymentIcon } from "./icons/paymenticon.svg"
+export { default as SORT } from "./icons/sort.svg"
 //admin-icon
 export const Avater = require('./icons/avatar.png');
 export { default as ICE } from './icons/ice.svg';
