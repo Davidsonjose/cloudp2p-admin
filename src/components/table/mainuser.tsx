@@ -7,7 +7,7 @@ interface mainLayoutTypes {
   children: JSX.Element;
 }
 
-function UserTable(props: any) {
+function MainUser(props: any) {
   const {} = props;
   return (
     <>
@@ -19,26 +19,6 @@ function UserTable(props: any) {
           <button className="hover:text-white">View All</button>
           <i className="ml-4 fa-solid fa-arrow-right"></i>
         </div>
-        {/* <div className="lg:mt-0 mt-4 flex justify-between space-x-5">
-        </div> */}
-        {/* <div className="flex items-center space-x-2">
-            <span className="text-gray-400">Role:</span>
-            <select
-              id="countries"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            >
-              <option selected>All</option>
-              <option value="manager">Manager</option>
-              <option value="user">User</option>
-            </select>
-          </div> */}
-        {/* <input
-            type="text"
-            placeholder="Search here"
-            className="w-50 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-gray-600 p-3 dark:placeholder-gray-900 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            onChange={(e) => setSearch(e.target.value)}
-            value={search}
-          /> */}
       </div>
       <DataTable
         columns={props.columns}
@@ -71,4 +51,4 @@ function UserTable(props: any) {
   );
 }
 
-export default UserTable;
+export default MainUser;
