@@ -35,7 +35,7 @@ function AnalyticWidget() {
       increase: true,
       percent: 10,
       icon: REGISTEREDICON,
-      image: REGISTERED
+      image: REGISTERED,
     },
     {
       name: "Users loggedin today",
@@ -73,17 +73,15 @@ function AnalyticWidget() {
                   % today
                 </p>
               </div>
-
+                
               <Image
                 src={data.icon}
                 alt=""
                 className="absolute left-[83%] z-10 top-[66%]"
               />
-              <Image
-                src={data.image}
-                alt=""
-                className="absolute w-16 h-16 left-[72%] top-[49%]"
-              />
+              <div className="left-[77.5%] lg:left-[73%] top-[49%] absolute">
+                <Image src={data.image} alt="" className="w-16 h-16" />
+              </div>
 
               {/* <div className="absolute w-[150px] h-[150px]  bg-[#FF3D00] rounded-[12px]"></div> */}
             </div>
