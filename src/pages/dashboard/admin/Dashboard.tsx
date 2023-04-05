@@ -10,6 +10,7 @@ import {
   Bar,
 } from "recharts";
 import { useEffect, useState } from "react";
+import HeaderWidget from "@/components/widgets/HeaderWidget";
 import { getAdminToken } from "@/common";
 import AnalyticWidget from "@/features/dashboard/analyticwidget";
 import AnalyticGraph from "@/features/dashboard/analyticgraph";
@@ -60,10 +61,14 @@ function Dashboard() {
     {
       name: "Name",
       selector: (row: any) => (
-        <div className="flex items-center space-x-2">
-          <p className="2xl bg-blue-600  rounded-full">
-            <i className="fa-solid fa-user p-3 text-white"></i>
-          </p>
+        <div className="flex items-center space-x-2 w-[300px]">
+          <div
+            className={`bg-${row.color}-600 h-[40px] w-[40px]  rounded-full flex justify-center items-center`}
+          >
+            <h3 className="text-white text-center text-[16px] font-bold">
+              {row.avater}
+            </h3>
+          </div>
           <p className="font-bold w-[200px]">{row.username}</p>
         </div>
       ),
@@ -83,13 +88,14 @@ function Dashboard() {
     },
     {
       name: "Date Registered",
-      selector: (row: any) => row.kyc,
+      selector: (row: any) => row.date,
     },
     {
       name: "Action",
       selector: (row: any) => (
-        <div>
-          <></>
+        <div className="flex items-center border border-gray-300 py-3 my-2 px-4 rounded-lg space-x-2 cursor-pointer">
+          <button className="">Disable</button>
+          <i className="fa-solid fa-caret-down"></i>
         </div>
       ),
     },
@@ -97,23 +103,29 @@ function Dashboard() {
 
   const userdetails = [
     {
-      username: "Davidson Jose",
+      username: "Davidson",
       phone: "(234) 900 000 000",
       email: "davidsonjose313@gmail.com",
       kyc: "KYC 3",
       date: "09/04/2023",
+      color: "green",
+      avater: "AB",
     },
     {
-      username: "Obiabo Emmanuel",
+      username: "Obiabo",
       phone: "(234) 900 000 000",
       email: "resmente313@gmail.com",
       kyc: "KYC 3",
       date: "09/10/2023",
+      color: "red",
+      avater: "DA",
     },
   ];
 
   return (
     <div className="h-screen bg-[#FAFAFA] w-full px-6 lg:px-0 py-4 lg:py-0">
+      <HeaderWidget title="Dashboard" />
+
       <div className="flex items-center justify-between">
         <h3 className="text-[#000000] text-[16px] font-semibold">
           {"User's"} Overview
