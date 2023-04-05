@@ -36,7 +36,7 @@ function ItemMenu(props: any) {
                 setCurrent(props.data.title);
               }}
             >
-              <img src={props.data.icon} alt="" className="w-4 text-white" />
+              {/* <img src={props.data.icon} alt="" className="w-4 text-white" /> */}
               <span className={`text-sm ml-4 font-semibold smooth text-black`}>
                 {props.data.title}
               </span>
@@ -49,7 +49,7 @@ function ItemMenu(props: any) {
             className="py-4 px-2 overflow-hidden smooth flex items-center rounded-md cursor-pointer  text-white"
             onClick={() => dropdown()}
           >
-            <img src={props.data.icon} alt="" className="w-4" />
+            {/* <img src={props.data.icon} alt="" className="w-4" /> */}
             <div className="flex justify-between w-full items-center ">
               <span className="text-sm ml-4 text-black font-semibold">
                 {props.data.title}
@@ -83,11 +83,11 @@ function ItemMenu(props: any) {
                     } p-2.5 flex items-center rounded-md  cursor-pointer  text-white`}
                     onClick={() => setIsSideBarVisible("hidden")}
                   >
-                    <img
+                    {/* <img
                       src={item.icon}
                       alt=""
                       className="w-2 h-2 rounded-full"
-                    />
+                    /> */}
                     <span
                       className={` text-sm ml-4  font-medium ${
                         item.color ? item.color : "text-[#004765]"

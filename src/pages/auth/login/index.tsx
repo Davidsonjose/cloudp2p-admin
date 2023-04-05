@@ -18,9 +18,7 @@ function Login() {
   const [message2, setMessage2] = useState("");
   const [err, setErr] = useState("");
   const { register, handleSubmit, reset, setValue } = useForm();
-  const [accesstoken, setAcessToken] = useState(null);
-  const [admin, setAdmin] = useState<any>(null);
-  const [data, setData] = useState(null);
+  // const [accesstoken, setAcessToken] = useState(null);
   const [remember, setRemember] = useState(false);
   const handleLogin = (data: any) => {
     setLoading(true);
@@ -60,8 +58,8 @@ function Login() {
         setLoading(false);
         setMessage("Login Successful");
         // setData(data)
-        setAdmin(data?.payload[0]);
-        setAcessToken(data?.accessToken);
+        // setAdmin(data?.payload[0]);
+        // setAcessToken(data?.accessToken);
         // dispatch(
         //   setRefreshToken({
         //     user: data?.payload[0],
@@ -100,18 +98,18 @@ function Login() {
     },
   ];
 
-  useEffect(() => {
-    if (message2) {
-      setTimeout(() => {
-        setLoading(true);
-        if (admin?.role === "admin") {
-          setAdminSession(accesstoken, admin);
-        } else {
-        }
-        window.location.href = `/dashboard/${admin?.role}`;
-      }, 1500);
-    }
-  }, [message2]);
+  // useEffect(() => {
+  //   if (message2) {
+  //     setTimeout(() => {
+  //       setLoading(true);
+  //       if (admin?.role === "admin") {
+  //         setAdminSession(accesstoken, admin);
+  //       } else {
+  //       }
+  //       window.location.href = `/dashboard/${admin?.role}`;
+  //     }, 1500);
+  //   }
+  // }, [message2]);
 
   useEffect(() => {
     const isremember = localStorage.getItem("remember");
