@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Transactiontable from "@/components/table/transactions/sendandreceive";
 import HeaderWidget from "@/components/widgets/HeaderWidget";
+import SendPopup from "./popupsendandreceive";
 function SendAndReceive() {
+  const [show, setShow] = useState(false);
+  const [data, setData] = useState<any>(null);
+
+  const handleDisable = (dat: any) => {
+    setShow(!show);
+    setData(dat);
+  };
+
   const columns = [
     {
       name: "User ID",
@@ -61,9 +70,14 @@ function SendAndReceive() {
     {
       name: "Action",
       selector: (row: any) => (
-        <div className="flex items-center border border-gray-300 py-3 my-2 px-4 rounded-lg space-x-2 cursor-pointer">
-          <button className="">Disable</button>
-          <i className="fa-solid fa-caret-down"></i>
+        <div className="relative">
+          <div
+            className="flex items-center border border-gray-300 py-3 my-2 px-4 rounded-lg space-x-2 cursor-pointer"
+            onClick={() => handleDisable(row)}
+          >
+            <button className="">Disable</button>
+            <i className="fa-solid fa-caret-down"></i>
+          </div>
         </div>
       ),
     },
@@ -104,7 +118,16 @@ function SendAndReceive() {
   return (
     <div className="">
       <HeaderWidget title="Transactions" />
-      <Transactiontable columns={columns} userdetails={userdetails} />
+      <div>
+    
+        <Transactiontable
+          show2={show}
+          setShow2={setShow}
+          data={data}
+          columns={columns}
+          userdetails={userdetails}
+        />
+      </div>
     </div>
   );
 }

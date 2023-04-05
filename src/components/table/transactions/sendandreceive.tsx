@@ -6,13 +6,13 @@ import DataTable from "react-data-table-component";
 import { SORT, Search } from "@/assets";
 import Image from "next/image";
 import { Fade } from "react-reveal";
-
+import SendPopup from "@/features/dashboard/transaction/popupsendandreceive";
 interface mainLayoutTypes {
   children: JSX.Element;
 }
 
 function SendAndReceive(props: any) {
-  const {} = props;
+  const { show2, setShow2, data, setData } = props;
   const [show, setShow] = useState(false);
 
   const handleSort = () => {
@@ -76,6 +76,15 @@ function SendAndReceive(props: any) {
           )}
         </div>
       </div>
+
+      <div className="relative">
+        <SendPopup
+          show={show2}
+          setShow={setShow2}
+          datas={data}
+          setDatas={setData}
+        />
+      </div>
       <DataTable
         columns={props.columns}
         data={props.userdetails}
@@ -104,6 +113,7 @@ function SendAndReceive(props: any) {
         // }
       />
       {show && <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>}
+      {show2 && <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>}
     </div>
   );
 }
