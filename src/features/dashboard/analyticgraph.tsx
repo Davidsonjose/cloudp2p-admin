@@ -104,7 +104,7 @@ function AnalyticGraph() {
   return (
     <>
       <div className="mt-10">
-        <div className="flex space-x-5 pb-7 justify-between">
+        <div className="flex flex-col md:flex-row space-x-5 pb-7 justify-between">
           <div className="bg-white rounded-lg w-full">
             <div className="flex items-center justify-between m-5">
               <h4 className="">Total Payments</h4>
@@ -226,7 +226,7 @@ function AnalyticGraph() {
             </ResponsiveContainer>
           </div>
         </div>
-        <div className="flex space-x-5 mb-4 justify-between">
+        <div className="flex flex-col md:flex-row space-x-5 mb-4 justify-between">
         <div className="bg-white rounded-lg w-full">
             <div className="flex items-center justify-between m-5">
               <h4 className="">Registered Users</h4>
