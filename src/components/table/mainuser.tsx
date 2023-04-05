@@ -15,9 +15,25 @@ function MainUser(props: any) {
         <div>
           <h3 className="font-bold text-lg">Recent Users</h3>
         </div>
-        <div className="flex rounded-lg hover:bg-[#17193F] items-center space-x-1 border py-2 px-5 border-gray-400 cursor-pointer">
-          <button className="hover:text-white">View All</button>
-          <i className="ml-4 fa-solid fa-arrow-right"></i>
+        <div className="lg:mt-0 mt-4 flex justify-between space-x-5">
+          <input
+            type="text"
+            placeholder="Search here"
+            className="w-50 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-gray-600 p-3 dark:placeholder-gray-900 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            //   onChange={(e) => setSearch(e.target.value)}
+            //   value={search}
+          />
+          <div className="flex items-center space-x-2">
+            <span className="text-gray-400">Sort</span>
+            <select
+              id="countries"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option selected>Date Registered</option>
+              <option value="manager">KYC Level 0-3</option>
+              <option value="user">KYC Level 3-1</option>
+            </select>
+          </div>
         </div>
       </div>
       <DataTable
@@ -27,7 +43,7 @@ function MainUser(props: any) {
         fixedHeader
         fixedHeaderScrollHeight="450px"
         highlightOnHover
-        
+
         // subHeader
         // subHeaderComponent={
         //   <div className="mt-4 flex justify-between items-center">
