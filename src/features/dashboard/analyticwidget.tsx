@@ -77,9 +77,9 @@ function AnalyticWidget() {
               <Image
                 src={data.icon}
                 alt=""
-                className="absolute left-[83%] z-10 top-[66%] [@media(min-width:1500px)]:left-[90%] [@media(min-width:1500px)]:top-[70%]"
+                className="absolute left-[95%] md:left-[83%] z-10 top-[66%] [@media(min-width:1500px)]:left-[90%] [@media(min-width:1500px)]:top-[70%]"
               />
-              <div className="left-[77.5%] curve-image lg:left-[73%] top-[49%] absolute [@media(min-width:1500px)]:left-[85%]">
+              <div className="left-[90%] curve-image lg:left-[73%] md:left-[73%] top-[49%] absolute [@media(min-width:1500px)]:left-[85%]">
                 <Image src={data.image} alt="" className="w-16 h-16" />
               </div>
 
