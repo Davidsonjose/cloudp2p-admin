@@ -8,9 +8,12 @@ import { useMediaQuery } from "@/hooks";
 import { selectUser } from "@/features/auth/api/slice";
 import { getAdmin } from "@/common";
 import Image from "next/image";
-
+import Link from "next/link";
+import React, { useState } from "react";
+import { useRouter } from "next/router";
 function Sidebar(props: any) {
-  // const navigate = useNavigate();
+  const [active, setActive] = useState("home");
+  const navigate = useRouter();
   const isMobileView = useMediaQuery("(max-width: 640px)");
   const isTabletView = useMediaQuery("(max-width: 840px)");
   const user = useSelector(selectUser);
@@ -112,7 +115,11 @@ function Sidebar(props: any) {
                     CloudP2P
                   </h4>
                 </div>
-                <div className="bg-[#E9EAFF] mt-10 flex items-center px-14 space-x-4">
+                <div
+                  className={`${
+                    active === "home" ? "bg-[#E9EAFF] " : ""
+                  } mt-10 flex items-center px-14 space-x-4`}
+                >
                   <Image
                     src={OVERVIEW}
                     alt=""
@@ -120,7 +127,13 @@ function Sidebar(props: any) {
                     // width={32}
                     className="h-5 w-5 self-center rounded-full cursor-pointer "
                   />
-                  <span className="py-4 text-center">Overview</span>
+                  <span
+                    className={`py-4 text-center ${
+                      active === "" && "text-white"
+                    }`}
+                  >
+                    Overview
+                  </span>
                 </div>
                 {props.data.map((dats: any) => (
                   <>
@@ -131,19 +144,28 @@ function Sidebar(props: any) {
                     </div>
                     {dats?.sub.map((dats: any, i: any) => (
                       <div
-                        className="flex mx-14 pb-6 items-center space-x-4"
                         key={i}
+                        onClick={() => {
+                          setActive("");
+                          navigate.push(`${dats.path}`);
+                        }}
+                        className="cursor-pointer"
                       >
-                        <Image
-                          src={dats?.icon}
-                          alt=""
-                          // height={32}
-                          // width={32}
-                          className="h-[10.06px] w-[11.37px] self-center rounded-full cursor-pointer "
-                        />
-                        <h3 className="text-white text-[14px]">
-                          {dats?.title}
-                        </h3>
+                        <div
+                          className="flex mx-14 pb-6 items-center space-x-4"
+                          // key={i}
+                        >
+                          <Image
+                            src={dats?.icon}
+                            alt=""
+                            // height={32}
+                            // width={32}
+                            className="h-[10.06px] w-[11.37px] self-center rounded-full cursor-pointer "
+                          />
+                          <h3 className="text-white text-[14px]">
+                            {dats?.title}
+                          </h3>
+                        </div>
                       </div>
                     ))}
                   </>
