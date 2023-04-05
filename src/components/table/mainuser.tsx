@@ -58,13 +58,13 @@ function MainUser(props: any) {
                     Sort By
                   </p>
                   <div className="border-b border-gray-100"></div>
-                  <p className=" px-3 pt-2 pb-2 text-[10px] text-[#141414]">
+                  <p className="cursor-pointer px-3 pt-2 pb-2 text-[10px] text-[#141414]">
                     Date registered
                   </p>
-                  <p className="px-3 pt-2 pb-2 text-[10px] text-[#141414]">
+                  <p className="cursor-pointer px-3 pt-2 pb-2 text-[10px] text-[#141414]">
                     KYC Level 0-3
                   </p>
-                  <p className="px-3 pt-2 text-[10px] text-[#141414] pb-5">
+                  <p className="cursor-pointer px-3 pt-2 text-[10px] text-[#141414] pb-5">
                     KYC Level 0-3
                   </p>
                 </div>
