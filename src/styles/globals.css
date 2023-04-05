@@ -2,9 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .scrollbar-hide::-webkit-scrollbar {
-	display: none;
+  display: none;
 }
 
 ::-webkit-scrollbar {
@@ -25,3 +24,10 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* @media screen and(width >= 1200px) {
+  .curve-image {
+    left: 80% !important;
+    position: absolute !important;
+  }
+} */
