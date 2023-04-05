@@ -16,7 +16,10 @@ function Popsend({ show, setShow }: any) {
                       ? "bg-[#17193F] text-white "
                       : "border-[#1414141A] bg-white border "
                   }  px-4 py-2`}
-                  onClick={() => {setActive("details")}}
+                  onClick={() => {
+                    setActive("details");
+                    setShow(true);
+                  }}
                 >
                   Details
                 </button>
@@ -38,23 +41,17 @@ function Popsend({ show, setShow }: any) {
                     <div className="flex justify-between space-x-16 mt-5">
                       <div className="flex-col justify-center items-center space-y-5">
                         <div>
-                          <p className="text-[12px] text-[#141414B2]">
-                            User ID
-                          </p>
-                          <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            DOM98ffdf
-                          </p>
-                        </div>
-                        <div>
-                          <p className="text-[12px] text-[#141414B2]">Type</p>
-                          <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            Send
-                          </p>
-                        </div>
-                        <div>
                           <p className="text-[12px] text-[#141414B2]">Fee</p>
                           <p className="pt-2 text-[#141414] text-[16px] font-semibold">
                             0.2348990
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-[12px] text-[#141414B2]">
+                            Sent From
+                          </p>
+                          <p className="pt-2 text-[#141414] text-[16px] font-semibold">
+                            USDT
                           </p>
                         </div>
                       </div>
@@ -69,18 +66,10 @@ function Popsend({ show, setShow }: any) {
                         </div>
                         <div>
                           <p className="text-[12px] text-[#141414B2]">
-                            Address
+                            Swap To
                           </p>
                           <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            ipayex.eth
-                          </p>
-                        </div>
-                        <div>
-                          <p className="text-[12px] text-[#141414B2]">
-                            Receiver ID
-                          </p>
-                          <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            909992833
+                            Binance 30
                           </p>
                         </div>
                       </div>
@@ -89,14 +78,6 @@ function Popsend({ show, setShow }: any) {
                           <p className="text-[12px] text-[#141414B2]">Status</p>
                           <p className="py-1 px-4 bg-[#3AB83A1A] text-green-800 rounded-lg mt-1">
                             success
-                          </p>
-                        </div>
-                        <div>
-                          <p className="text-[12px] text-[#141414B2]">
-                            Receiver Address
-                          </p>
-                          <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            davidson.eth
                           </p>
                         </div>
                         <div>
@@ -123,7 +104,7 @@ function Popsend({ show, setShow }: any) {
                       <p className="text-[12px] text-[#141414B2] text-sm">
                         Once flagged, {"it'll"} take time to undone
                       </p>
-{/* @welloutsmm */}
+                      {/* @welloutsmm */}
                       <div className="flex space-x-4 mt-5">
                         <button
                           className="bg-[#FF1E651A] text-[13px] font-semibold text-[#FF1E65] rounded-lg py-2 px-6"

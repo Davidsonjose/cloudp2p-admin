@@ -6,12 +6,12 @@ import DataTable from "react-data-table-component";
 import { SORT, Search } from "@/assets";
 import Image from "next/image";
 import { Fade } from "react-reveal";
-import SendPopup from "@/features/dashboard/transaction/popupsendandreceive";
+import SwapPopup from "@/features/dashboard/transaction/popupswap";
 interface mainLayoutTypes {
   children: JSX.Element;
 }
 
-function SendAndReceive(props: any) {
+function SwapTransaction(props: any) {
   const { show2, setShow2, data, setData } = props;
   const [show, setShow] = useState(false);
 
@@ -62,12 +62,6 @@ function SendAndReceive(props: any) {
                   </p>
                   <div className="border-b border-gray-100"></div>
                   <p className="cursor-pointer px-3 pt-2 pb-2 text-[10px] text-[#141414]">
-                    Send Transactions
-                  </p>
-                  <p className="cursor-pointer px-3 pt-2 pb-2 text-[10px] text-[#141414]">
-                    Receive Transactions
-                  </p>
-                  <p className="cursor-pointer px-3 pt-2 pb-2 text-[10px] text-[#141414]">
                     Status
                   </p>
                   <p className="cursor-pointer px-3 pt-2 text-[10px] text-[#141414] pb-5">
@@ -81,7 +75,7 @@ function SendAndReceive(props: any) {
       </div>
 
       <div className="relative">
-        <SendPopup
+        <SwapPopup
           show={show2}
           setShow={setShow2}
           datas={data}
@@ -121,4 +115,4 @@ function SendAndReceive(props: any) {
   );
 }
 
-export default SendAndReceive;
+export default SwapTransaction;
