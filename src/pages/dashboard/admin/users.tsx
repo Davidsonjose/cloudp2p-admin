@@ -1,7 +1,7 @@
 import MainLayout from "@/layouts";
 // import { Route, Routes, useNavigate } from "react-router-dom";
 
-import Dashboard from "./Dashboard";
+import Dashboard from "../../../features/dashboard/admin/Dashboard";
 
 import { useSelector } from "react-redux";
 // import { userData } from "../src/store/reducer/authReducer";
