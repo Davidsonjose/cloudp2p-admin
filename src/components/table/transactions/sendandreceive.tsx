@@ -30,7 +30,7 @@ function SendAndReceive(props: any) {
     <div className="" onClick={() => handleOverlay()}>
       <div className="mt-10 lg:flex lg:mx-0 mx-4 justify-between items-center mb-5">
         <div>
-          <h3 className="font-bold text-lg">Transactions</h3>
+          <h3 className="font-bold text-lg pt-5 lg:pt-0">Transactions</h3>
         </div>
         <div className="lg:mt-0 mt-4 relative flex justify-between space-x-5">
           <div className="relative">

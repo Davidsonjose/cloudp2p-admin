@@ -126,7 +126,7 @@ function Dashboard() {
     <div className="h-screen bg-[#FAFAFA] w-full px-6 lg:px-0 py-4 lg:py-0">
       <HeaderWidget title="Dashboard" />
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between pt-10 lg:pt-0">
         <h3 className="text-[#000000] text-[16px] font-semibold">
           {"User's"} Overview
         </h3>
