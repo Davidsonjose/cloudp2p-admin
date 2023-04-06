@@ -9,7 +9,7 @@ function SearchBar() {
         <input
           type="search"
           id="default-search"
-          className="block py-2 w-[400px] px-3 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="block py-2 w-[400px] px-3 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-gray-300 focus:border-gray-300 dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 dark:text-gray-500 dark:focus:ring-gray-100 dark:focus:border-gray-100"
           placeholder="Find what you're looking for"
           required
         />
