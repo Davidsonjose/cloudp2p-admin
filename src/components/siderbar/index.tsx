@@ -11,7 +11,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import AddUser from "../modals/adduser";
 function Sidebar(props: any) {
+  const [open, setOpen] = useState(false);
   const [active, setActive] = useState("home");
   const navigate = useRouter();
   const isMobileView = useMediaQuery("(max-width: 640px)");
@@ -101,7 +103,12 @@ function Sidebar(props: any) {
                           key={i}
                           onClick={() => {
                             // setActive("");
-                            navigate.push(`${dats.path}`);
+                            if (dats.title === "Add User") {
+                              setOpen(true);
+                              setIsSideBarVisible("hidden")
+                            } else {
+                              navigate.push(`${dats.path}`);
+                            }
                           }}
                           className="cursor-pointer"
                         >
@@ -184,7 +191,11 @@ function Sidebar(props: any) {
                         key={i}
                         onClick={() => {
                           // setActive("");
-                          navigate.push(`${dats.path}`);
+                          if (dats.title === "Add User") {
+                            setOpen(true);
+                          } else {
+                            navigate.push(`${dats.path}`);
+                          }
                         }}
                         className="cursor-pointer"
                       >
@@ -210,6 +221,7 @@ function Sidebar(props: any) {
               </div>
             </div>
           </div>
+          <AddUser open={open} setOpen={setOpen} />
         </div>
       )}
     </div>

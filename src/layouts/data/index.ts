@@ -10,8 +10,8 @@ export const mainadmin = [
       { title: "Users", icon: USERS, path: "/dashboard/admin/users" },
       { title: "Send & Receive", icon: SEND, path: "/dashboard/admin/transaction/sendandreceive" },
       { title: "Swap Transactions", icon: SWAP, path: "/dashboard/admin/transaction/swap-transaction" },
+      { title: "P2P", icon: SWAP, path: "/dashboard/admin/transaction/ptp-transaction" },
       { title: "KYC", icon: KYC, path: "/dashboard/admin/userkyc" },
-      { title: "P2P", icon: KYC, path: "/dashboard/admin/userkyc" },
     ]
   },
   {
