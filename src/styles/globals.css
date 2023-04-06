@@ -31,3 +31,24 @@
     position: absolute !important;
   }
 } */
+
+
+.hide {
+  display: block;
+  position: absolute;
+  width: 100%;
+  top: 0; left: 0;
+  bottom: 0; right: 0;
+  transition: left 1s;
+  overflow: hidden;
+}
+
+.show {
+  display: block;
+  position: fixed;
+  /* width: 100%; */
+  top: 0; left: 100%;
+  bottom: 0; right: 0;
+  transition: left 1s;
+  overflow: hidden;
+}

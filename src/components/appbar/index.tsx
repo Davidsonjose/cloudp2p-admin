@@ -19,7 +19,7 @@ function AppBar({
 }: any) {
   return (
     <>
-      <div className="  bg-[#FFFFFF]  sticky top-0 z-20  rounded-b-2xl h-12 flex justify-between  items-center shadow-header  py-10 px-6 lg:px-10">
+      <div className="  bg-[#FFFFFF]  sticky top-0 z-36  rounded-b-2xl h-12 flex justify-between  items-center shadow-header  py-10 px-6 lg:px-10">
         <div className="shadow-header   block lg:hidden rounded-full p-2 bg-black cursor-pointer">
           <VscThreeBars color="#ffffff" className="" onClick={openSidebar} />
         </div>

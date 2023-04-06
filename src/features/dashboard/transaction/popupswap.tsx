@@ -7,7 +7,7 @@ function Popsend({ show, setShow }: any) {
     <>
       {show && (
         <Fade>
-          <div className="absolute  bg-white rounded-lg z-50 left-[50%]">
+          <div className="absolute  bg-white rounded-lg z-50 left-[10%] lg:left-[50%] md:left-[50%]">
             <div className="p-3">
               <div className="flex items-center space-x-2">
                 <button

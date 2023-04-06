@@ -76,7 +76,7 @@ function MainLayout({ children }: mainLayoutTypes) {
         onClick={handleClose}
       >
         <AppBar
-          openSideBar={openSidebar}
+          openSidebar={openSidebar}
           user={user}
           handleNotification={handleNotification}
           view={view}
