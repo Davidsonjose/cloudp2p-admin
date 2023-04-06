@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../../../features/api/slice";
 import { useEffect, useState } from "react";
 import HeaderWidget from "@/components/widgets/HeaderWidget";
-import KycComponent from "@/features/dashboard/user/kyc"
+import ManageAdmin from "@/features/dashboard/user/manageuser"
 function UserKyc() {
   const user = useSelector(selectUser);
   // const navigate = useNavigate();
@@ -53,7 +53,7 @@ function UserKyc() {
   }, []);
   return (
     <MainLayout>
-      <KycComponent />
+      <ManageAdmin />
     </MainLayout>
   );
 }

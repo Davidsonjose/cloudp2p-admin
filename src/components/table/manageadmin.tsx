@@ -6,7 +6,7 @@ import DataTable from "react-data-table-component";
 import { SORT, Search } from "@/assets";
 import Image from "next/image";
 import { Fade } from "react-reveal";
-import KycPop from "@/features/dashboard/user/userkycpopup";
+import ManageAdminPop from "@/features/dashboard/user/manageadminpop";
 interface mainLayoutTypes {
   children: JSX.Element;
 }
@@ -71,7 +71,7 @@ function ManageUsert(props: any) {
         </div>
       </div>
       <div className="relative">
-        <KycPop
+        <ManageAdminPop
           show={show2}
           setShow={setShow2}
           datas={data}

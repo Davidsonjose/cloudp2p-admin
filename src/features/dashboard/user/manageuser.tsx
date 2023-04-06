@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import KycTable from "@/components/table/userkyc";
+import ManageAdmin from "@/components/table/manageadmin";
 import HeaderWidget from "@/components/widgets/HeaderWidget";
 // import SendPopup from "./popupsendandreceive";
 function ManagerUser() {
@@ -44,9 +44,9 @@ function ManagerUser() {
       ),
     },
     {
-        name: "Department",
-        selector: (row: any) => row.department,
-      },
+      name: "Department",
+      selector: (row: any) => row.department,
+    },
     {
       name: "Date Added",
       selector: (row: any) => row.date,
@@ -84,7 +84,8 @@ function ManagerUser() {
       senderid: "hsjjkajsss",
       provider: "Meta App",
       role: "UI/UX Designer",
-      ip: "192.168.0.0.1"
+      ip: "192.168.0.0.1",
+      department: "engineering",
     },
     // {
     //   username: "Obiabo",
@@ -106,10 +107,9 @@ function ManagerUser() {
   ];
   return (
     <div className="">
-      <HeaderWidget title="User KYC" />
+      <HeaderWidget title="Manage Admin" />
       <div>
-
-        <KycTable
+        <ManageAdmin
           show2={show}
           setShow2={setShow}
           data={data}

@@ -18,7 +18,7 @@ export const mainadmin = [
     category: "MANAGEMENT",
     sub: [
       { title: "Add User", icon: ADDUSER, path: "/dashboard/admin" },
-      { title: "Manage Admin", icon: SETTING, path: "/dashboard/admin" }
+      { title: "Manage Admin", icon: SETTING, path: "/dashboard/admin/manage-admin" }
     ]
   },
 ];

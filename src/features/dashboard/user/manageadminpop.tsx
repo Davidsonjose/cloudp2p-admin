@@ -24,16 +24,6 @@ function ManageUserPop({ show, setShow }: any) {
                 </button>
 
                 <button
-                  onClick={() => setActive("suspend")}
-                  className={`rounded ${
-                    active == "suspend"
-                      ? "bg-[#17193F] text-white "
-                      : "border-[#1414141A] bg-white border "
-                  }  px-4 py-2`}
-                >
-                  Ban
-                </button>
-                <button
                   onClick={() => setActive("flag")}
                   className={`rounded ${
                     active == "flag"
@@ -42,6 +32,16 @@ function ManageUserPop({ show, setShow }: any) {
                   }  px-4 py-2`}
                 >
                   Flag Admin
+                </button>
+                <button
+                  onClick={() => setActive("ban")}
+                  className={`rounded ${
+                    active == "ban"
+                      ? "bg-[#17193F] text-white "
+                      : "border-[#1414141A] bg-white border "
+                  }  px-4 py-2`}
+                >
+                  Ban
                 </button>
               </div>
 
@@ -59,51 +59,31 @@ function ManageUserPop({ show, setShow }: any) {
                           </p>
                         </div>
                         <div>
-                          <p className="text-[12px] text-[#141414B2]">Email</p>
-                          <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            davidsonj@gmail.com
-                          </p>
-                        </div>
-                        <div>
                           <p className="text-[12px] text-[#141414B2]">
-                            Phone Number
+                            Lon/Lat
                           </p>
                           <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            7083488928
+                            567 Ion, 789 lat
                           </p>
                         </div>
                       </div>
                       <div className="flex-col justify-center items-center space-y-5">
                         <div>
-                          <p className="text-[12px] text-[#141414B2]">Pay ID</p>
+                          <p className="text-[12px] text-[#141414B2]">Route</p>
                           <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            0993029011
+                            Seme Border
                           </p>
                         </div>
                         <div>
                           <p className="text-[12px] text-[#141414B2]">
-                            Date Registered
+                            Last Login
                           </p>
                           <p className="pt-2 text-[#141414] text-[16px] font-semibold">
                             13-03-2023
                           </p>
                         </div>
-                        <div>
-                          <p className="text-[12px] text-[#141414B2]">
-                            Country
-                          </p>
-                          <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            Nigeria
-                          </p>
-                        </div>
                       </div>
                       <div className="flex-col justify-center items-center space-y-5">
-                        <div>
-                          <p className="text-[12px] text-[#141414B2]">KYC Level</p>
-                          <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            Teir 0
-                          </p>
-                        </div>
                         <div>
                           <p className="text-[12px] text-[#141414B2]">
                             Country
@@ -118,6 +98,36 @@ function ManageUserPop({ show, setShow }: any) {
                             192:168.0.0.1
                           </p>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </Fade>
+              )}
+              {active === "ban" && (
+                <Fade>
+                  <div>
+                    <h4 className="font-semibold text-[24px] mt-4 text-base">
+                      Ban User
+                    </h4>
+                    <div className="pr-10">
+                      <p className="text-[12px] pt-4 text-[#141414B2] text-sm">
+                        Are you sure you want to band this user? Once band, it
+                        take a while to be undone
+                      </p>
+                      {/* @welloutsmm */}
+                      <div className="flex space-x-4 mt-5">
+                        <button
+                          className="bg-[#FFA5001A] text-[13px] font-semibold text-[#FFA500] rounded-lg py-2 px-6"
+                          onClick={() => {
+                            setShow(false);
+                            setActive("details");
+                          }}
+                        >
+                          No, Cancel
+                        </button>
+                        <button className="bg-[#FFA500] text-[13px] font-semibold text-white rounded-lg py-2 px-6">
+                          Yes, Ban Admin
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -149,36 +159,6 @@ function ManageUserPop({ show, setShow }: any) {
                         </button>
                         <button className="bg-[#FF0000] text-[13px] font-semibold text-white rounded-lg py-2 px-6">
                           Yes, Flag
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </Fade>
-              )}
-              {active === "suspend" && (
-                <Fade>
-                  <div>
-                    <h4 className="font-semibold text-[24px] mt-4 text-base">
-                      Suspend User
-                    </h4>
-                    <div className="pr-10">
-                      <p className="text-[12px] pt-4 text-[#141414B2] text-sm">
-                        Are you sure you want to suspend this user? Once
-                        suspend, it take a while to be undone
-                      </p>
-                      {/* @welloutsmm */}
-                      <div className="flex space-x-4 mt-5">
-                        <button
-                          className="bg-[#FFA5001A] text-[13px] font-semibold text-[#FFA500] rounded-lg py-2 px-6"
-                          onClick={() => {
-                            setShow(false);
-                            setActive("details");
-                          }}
-                        >
-                          No, Cancel
-                        </button>
-                        <button className="bg-[#FFA500] text-[13px] font-semibold text-white rounded-lg py-2 px-6">
-                          Yes, Suspend
                         </button>
                       </div>
                     </div>
