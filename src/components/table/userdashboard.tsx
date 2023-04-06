@@ -11,7 +11,7 @@ function UserTable(props: any) {
   const {} = props;
   return (
     <>
-      <div className="mt-10 lg:flex lg:mx-0 mx-4 justify-between items-center mb-5">
+      <div className="mt-10 flex lg:mx-0 mx-4 justify-between items-center mb-5">
         <div>
           <h3 className="font-bold text-lg pt-5 lg:pt-0">Recent Users</h3>
         </div>
