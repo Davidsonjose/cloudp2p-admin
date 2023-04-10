@@ -62,6 +62,8 @@ function AddUser({ open, setOpen }: any) {
     )
   );
 
+
+  Select.displayName = "";
   const handleCreation = () => {
     return;
   };
