@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Fade } from "react-reveal";
 
-function UserKYC({ show, setShow }: any) {
+function UserKYC({ show, setShow, datas }: any) {
   const [active, setActive] = useState("details");
   return (
     <>
@@ -55,13 +55,13 @@ function UserKYC({ show, setShow }: any) {
                             Full Name
                           </p>
                           <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            Davidson Jose
+                            {datas?.username}
                           </p>
                         </div>
                         <div>
                           <p className="text-[12px] text-[#141414B2]">Email</p>
                           <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            davidsonj@gmail.com
+                            {datas?.email}
                           </p>
                         </div>
                         <div>
@@ -69,7 +69,7 @@ function UserKYC({ show, setShow }: any) {
                             Phone Number
                           </p>
                           <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            7083488928
+                            {datas?.phone}
                           </p>
                         </div>
                       </div>
@@ -77,7 +77,7 @@ function UserKYC({ show, setShow }: any) {
                         <div>
                           <p className="text-[12px] text-[#141414B2]">Pay ID</p>
                           <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            0993029011
+                            {datas?.payId ? datas?.payId : "no pay id"}
                           </p>
                         </div>
                         <div>
@@ -85,7 +85,7 @@ function UserKYC({ show, setShow }: any) {
                             Date Registered
                           </p>
                           <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            13-03-2023
+                            {datas?.date}
                           </p>
                         </div>
                         <div>
@@ -99,9 +99,11 @@ function UserKYC({ show, setShow }: any) {
                       </div>
                       <div className="flex-col justify-center items-center space-y-5">
                         <div>
-                          <p className="text-[12px] text-[#141414B2]">KYC Level</p>
+                          <p className="text-[12px] text-[#141414B2]">
+                            KYC Level
+                          </p>
                           <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            Teir 0
+                            {datas?.kyc}
                           </p>
                         </div>
                         <div>
@@ -109,13 +111,13 @@ function UserKYC({ show, setShow }: any) {
                             Country
                           </p>
                           <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            Nigeria
+                            {datas?.country ? datas?.country : "No country"}
                           </p>
                         </div>
                         <div>
                           <p className="text-[12px] text-[#141414B2]">IP</p>
                           <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            192:168.0.0.1
+                            {datas?.ip ? datas?.ip : "none"}
                           </p>
                         </div>
                       </div>

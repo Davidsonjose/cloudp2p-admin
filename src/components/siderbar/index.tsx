@@ -34,11 +34,11 @@ function Sidebar(props: any) {
         <Transition
           className={"z-50"}
           show={props?.open}
-          enter="transition-all ease-in-out duration-1000"
-          enterFrom="transform -translate-y-full"
-          enterTo="transform -translate-y-0"
-          leave="transition-all  ease-out duration-300"
-          leaveFrom="transform -translate-y-0"
+          enter="transition-all ease-in-out duration-7000"
+          enterFrom="transform -translate-x-full"
+          enterTo="transform -translate-x-0"
+          leave="transition-all  ease-out duration-500"
+          leaveFrom="transform -translate-x-0"
           leaveTo="transform -translate-x-full"
         >
           <div

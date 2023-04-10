@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Fade } from "react-reveal";
 
-function Popsend({ show, setShow }: any) {
+function Popsend({ show, setShow, datas }: any) {
   const [active, setActive] = useState("details");
+
   return (
     <>
       {show && (
@@ -43,7 +44,7 @@ function Popsend({ show, setShow }: any) {
                         <div>
                           <p className="text-[12px] text-[#141414B2]">Fee</p>
                           <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            0.2348990
+                            {datas?.fee}
                           </p>
                         </div>
                         <div>
@@ -51,7 +52,7 @@ function Popsend({ show, setShow }: any) {
                             Sent From
                           </p>
                           <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            USDT
+                            {datas?.from ? datas?.from : "none"}
                           </p>
                         </div>
                       </div>
@@ -61,7 +62,7 @@ function Popsend({ show, setShow }: any) {
                             Transaction ID
                           </p>
                           <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            0993029011
+                            {datas?.transactionid}
                           </p>
                         </div>
                         <div>
@@ -69,7 +70,7 @@ function Popsend({ show, setShow }: any) {
                             Swap To
                           </p>
                           <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            Binance 30
+                            {datas?.to ? datas?.to : "none"}
                           </p>
                         </div>
                       </div>
@@ -77,13 +78,13 @@ function Popsend({ show, setShow }: any) {
                         <div>
                           <p className="text-[12px] text-[#141414B2]">Status</p>
                           <p className="py-1 px-4 bg-[#3AB83A1A] text-green-800 rounded-lg mt-1">
-                            success
+                            {datas?.status}
                           </p>
                         </div>
                         <div>
                           <p className="text-[12px] text-[#141414B2]">Date</p>
                           <p className="pt-2 text-[#141414] text-[16px] font-semibold">
-                            19/04/2023
+                            {datas?.date}
                           </p>
                         </div>
                       </div>

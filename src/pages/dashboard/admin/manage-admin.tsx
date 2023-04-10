@@ -23,7 +23,7 @@ function UserKyc() {
   };
 
   const updateExpireTime = () => {
-    const expireTime = Date.now() + 180000;
+    const expireTime = Date.now() + 1800000;
 
     localStorage.setItem("expireTime", expireTime.toFixed());
   };
