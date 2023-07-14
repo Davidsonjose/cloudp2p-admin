@@ -10,6 +10,7 @@ import { getTransactionApiProps } from "@/interface/user";
 import {
   getAllUserTransactions,
   getSwapTrasactions,
+  getTransactionAggs,
 } from "@/services/backend/transactions.service";
 import { getAllUser } from "@/services/backend/users.service";
 
@@ -62,4 +63,14 @@ export const getAllSwapTrasactions = async ({
     store.dispatch(setSwapTransactions(allswaptransaction.data.data));
     setLoading(false);
   } catch (error) {}
+};
+
+export const getAllTransactionAgg = async () => {
+  try {
+    const transaction = await getTransactionAggs();
+    console.log(transaction, "here is transaction");
+    return transaction.data;
+  } catch (error) {
+    console.log(error, "here is error");
+  }
 };

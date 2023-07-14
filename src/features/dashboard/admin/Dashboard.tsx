@@ -15,7 +15,7 @@ import { getAdminToken } from "@/common";
 import AnalyticWidget from "@/features/dashboard/analyticwidget";
 import AnalyticGraph from "@/features/dashboard/analyticgraph";
 import UserTable from "@/components/table/userdashboard";
-import { getAllUsers } from "@/functions/handler/user";
+import { getActiveAgg, getAllUsers } from "@/functions/handler/user";
 import LoadingSpinner from "@/layouts/loadingSpinner";
 import { useSelector } from "react-redux";
 import { selectAllUsers } from "@/features/auth/api/users";
@@ -25,6 +25,7 @@ function Dashboard() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const allusers = useSelector(selectAllUsers);
+
   const columns = [
     {
       name: "Name",
@@ -93,6 +94,8 @@ function Dashboard() {
   useEffect(() => {
     (async () => {
       getAllUsers({ setLoading, setMessage });
+      const useragg = await getActiveAgg();
+      console.log(useragg);
     })();
   }, []);
 

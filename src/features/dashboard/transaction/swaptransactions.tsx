@@ -98,7 +98,7 @@ function SwapTransactions() {
             className="flex items-center border border-gray-300 py-3 my-2 px-4 rounded-lg space-x-2 cursor-pointer"
             onClick={() => handleDisable(row)}
           >
-            <button className="">Disable</button>
+            <button className="">View</button>
             <i className="fa-solid fa-caret-down"></i>
           </div>
         </div>

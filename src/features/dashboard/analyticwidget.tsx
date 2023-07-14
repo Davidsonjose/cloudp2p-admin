@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import {
   Payment,
@@ -11,39 +11,71 @@ import {
   REGISTEREDICON,
 } from "@/assets";
 import Currency from "react-currency-formatter";
+import { useSelector } from "react-redux";
+import { selectAllUsers } from "../auth/api/users";
+import { getActiveAgg } from "@/functions/handler/user";
+import { getAllTransactionAgg } from "@/functions/handler/user/transactions";
 function AnalyticWidget() {
+  const allusers = useSelector(selectAllUsers);
+  const [usersToday, setUsersToday] = useState(0);
+  const [activeusers, setActiveUsers] = useState(0);
+  const [transactionAgg, setTransactionAgg] = useState(0);
+  useEffect(() => {
+    const today = new Date().toISOString().split("T")[0];
+    const usersToday = allusers.filter(
+      (user: any) => user.createdAt.split("T")[0] === today
+    );
+
+    setUsersToday(usersToday?.length);
+  }, [allusers]);
+
+  useEffect(() => {
+    (async () => {
+      const useragg = await getActiveAgg();
+      const transactionagg = await getAllTransactionAgg();
+      // console.log(useragg);
+      // setActiveUsers(useragg[0]?._count?.id);
+      // setTransactionAgg(transactionagg[0]?._count?.id);
+      console.log(transactionagg, "here is it man");
+    })();
+  }, []);
+
+  console.log(usersToday);
   const widgetdata = [
     {
       name: "total payments",
-      total: 90933443223,
+      total: 300000,
       image: Payment,
       icon: PaymentIcon,
       increase: true,
       percent: 40,
     },
     {
-      name: "Total active users",
-      total: 909334,
-      increase: false,
+      name: "Active users",
+      total: activeusers,
+      increase: true,
       percent: 60,
       icon: ACTIVEICON,
       image: ACTIVEUSER,
+      normal: true,
     },
     {
       name: "Total registered users",
-      total: 5000499302,
+      total: allusers?.length,
       increase: true,
       percent: 10,
       icon: REGISTEREDICON,
       image: REGISTERED,
+      normal: true,
     },
     {
-      name: "Users loggedin today",
-      total: 890339283,
-      increase: false,
+      name: "Users registered today",
+      total: usersToday,
+      increase: true,
       percent: 20,
       icon: LOGGEDICON,
       image: LOGGED,
+      normal: true,
     },
   ];
   return (
@@ -60,7 +92,11 @@ function AnalyticWidget() {
                   {data.name}
                 </h3>
                 <p className="text-[20px] text-[#141414] font-semibold">
-                  <Currency quantity={data.total} currency="NGN" />
+                  {!data?.normal ? (
+                    <Currency quantity={data.total} currency="NGN" />
+                  ) : (
+                    <p>{data.total}</p>
+                  )}
                 </p>
                 <p
                   className={` font-semibold ${
@@ -73,7 +109,7 @@ function AnalyticWidget() {
                   % today
                 </p>
               </div>
-                
+
               <Image
                 src={data.icon}
                 alt=""

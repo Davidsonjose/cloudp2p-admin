@@ -4,6 +4,7 @@ import { getUserApiProps } from "@/interface/user";
 import {
   activateUserApi,
   deactivateUserApi,
+  getActiveUserAgg,
   getAllUser,
 } from "@/services/backend/users.service";
 
@@ -24,6 +25,24 @@ export const getAllUsers = async ({
     setLoading(false);
   }
 };
+// export const getAllUsersToday = async ({
+//   setLoading,
+//   setMessage,
+// }: getUserApiProps) => {
+//   setLoading(true);
+//   setMessage("");
+//   try {
+//     const allusers = await getAllUser();
+//     setLoading(false);
+//     const users = allusers.data.data;
+//     store.dispatch(setAllUsers(allusers?.data?.data));
+//     setLoading(false);
+//     // return allusers.data?.data;
+//   } catch (error: any) {
+//     console.log(error);
+//     setLoading(false);
+//   }
+// };
 
 export const deactivateUser = async ({
   setLoading,
@@ -68,5 +87,14 @@ export const activateUser = async ({
   } catch (error) {
     console.log(error);
     setLoading(false);
+  }
+};
+
+export const getActiveAgg = async () => {
+  try {
+    const users = await getActiveUserAgg();
+    return users.data.data;
+  } catch (error) {
+    console.log(error);
   }
 };

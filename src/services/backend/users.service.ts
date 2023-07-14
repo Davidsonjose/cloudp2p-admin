@@ -27,3 +27,7 @@ export const activateUserApi = async (userId: number) => {
   const offer = await apiClient.put(`/backend/user/activate/${userId}`);
   return offer;
 };
+
+export const getActiveUserAgg = async () => {
+  return await apiClient.get(`/backend/user/agg-active-users`);
+};

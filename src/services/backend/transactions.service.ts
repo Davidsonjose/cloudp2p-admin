@@ -12,3 +12,8 @@ export const getAllUserTransactions = async (type?: TrasanctionType) => {
 export const getSwapTrasactions = async () => {
   return await apiClient.get(`/backend/swap`);
 };
+export const getTransactionAggs = async () => {
+  return await apiClient.get(`/backend/transactions/agg-total-transactions`);
+};
+
+// export const getTransactionAgg = async () => {};
