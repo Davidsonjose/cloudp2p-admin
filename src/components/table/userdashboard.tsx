@@ -2,21 +2,28 @@
 import { useForm } from "react-hook-form";
 // import Input from 'components/form-control/input';
 import DataTable from "react-data-table-component";
+import { useRouter } from "next/navigation";
 
 interface mainLayoutTypes {
   children: JSX.Element;
 }
 
 function UserTable(props: any) {
+  const router = useRouter();
   const {} = props;
   return (
     <>
-      <div className="mt-10 flex lg:mx-0 mx-4 justify-between items-center mb-5">
+      <div className="mt-10 flex lg:mx-0 mx-4 justify-between items-center mb-5 py-5">
         <div>
           <h3 className="font-bold text-lg pt-5 lg:pt-0">Recent Users</h3>
         </div>
-        <div className="flex rounded-lg hover:bg-[#17193F] items-center space-x-1 border py-2 px-5 border-gray-400 cursor-pointer">
-          <button className="hover:text-white">View All</button>
+        <div className="flex rounded-lg items-center space-x-1 border py-2 px-5 border-gray-400 cursor-pointer">
+          <button
+            className="cursor-pointer"
+            onClick={() => router.push("/dashboard/admin/users")}
+          >
+            View All
+          </button>
           <i className="ml-4 fa-solid fa-arrow-right"></i>
         </div>
         {/* <div className="lg:mt-0 mt-4 flex justify-between space-x-5">
@@ -47,7 +54,7 @@ function UserTable(props: any) {
         fixedHeader
         fixedHeaderScrollHeight="450px"
         highlightOnHover
-        
+
         // subHeader
         // subHeaderComponent={
         //   <div className="mt-4 flex justify-between items-center">

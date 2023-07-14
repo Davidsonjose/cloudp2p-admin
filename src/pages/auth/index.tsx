@@ -1,13 +1,9 @@
-import MainLayout from '@/layouts';
+import MainLayout from "@/layouts";
 
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../features/api/slice';
+import { useSelector } from "react-redux";
+
 function AuthRoutes() {
-	const user = useSelector(selectUser);
-	return (
-		<>
-		</>
-	);
+  return <></>;
 }
 
 export default AuthRoutes;

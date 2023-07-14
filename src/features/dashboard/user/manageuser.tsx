@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ManageAdmin from "@/components/table/manageadmin";
 import HeaderWidget from "@/components/widgets/HeaderWidget";
+import { useSelector } from "react-redux";
+import { selectAllAdminUsers } from "@/features/auth/api/users";
 // import SendPopup from "./popupsendandreceive";
+import moment from "moment";
+import { getAdminUsers } from "@/functions/handler/user/admin";
+import Image from "next/image";
+import { Avater } from "@/assets";
 function ManagerUser() {
   const [show, setShow] = useState(false);
   const [data, setData] = useState<any>(null);
-
+  const alladmins = useSelector(selectAllAdminUsers);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
   const handleDisable = (dat: any) => {
     setShow(!show);
     setData(dat);
@@ -13,24 +21,30 @@ function ManagerUser() {
 
   const columns = [
     {
-      name: "Admin ID",
+      name: "Name",
       selector: (row: any) => (
         <div className="flex items-center space-x-2 w-[300px]">
-          <div
-            className={`bg-${row.color}-600 h-[26px] w-[26px]  rounded-full flex justify-center items-center`}
-          >
-            <h3 className="text-white text-center text-[10px] font-bold">
-              {row.avater}
-            </h3>
-          </div>
-          <p className="font-semibold text-[10px] uppercase">{row.userid}</p>
+          <Image
+            src={Avater}
+            alt="profile img"
+            height={40}
+            width={40}
+            className="rounded-full"
+          />
+          <p className="text-xs">
+            {row.firstName} {row.lastName}
+          </p>
+        </div>
+      ),
+    },
+    {
+      name: "Email",
+      selector: (row: any) => (
+        <div className="flex items-center space-x-2 w-[300px]">
+          <p className="font-bold w-[200px]">{row.email}</p>
         </div>
       ),
       sortable: true,
-    },
-    {
-      name: "IP Address",
-      selector: (row: any) => row.ip,
     },
     {
       name: "Role",
@@ -44,12 +58,18 @@ function ManagerUser() {
       ),
     },
     {
-      name: "Department",
-      selector: (row: any) => row.department,
+      name: "Last Seen",
+      selector: (row: any) => (
+        <>
+          {!row.loggedInAt
+            ? "Never logged in"
+            : moment(row.loggedInAt).format("LL")}{" "}
+        </>
+      ),
     },
     {
       name: "Date Added",
-      selector: (row: any) => row.date,
+      selector: (row: any) => moment(row.createdAt).format("LL"),
     },
     {
       name: "Action",
@@ -67,44 +87,11 @@ function ManagerUser() {
     },
   ];
 
-  const userdetails = [
-    {
-      username: "Davidson",
-      phone: "(234) 900 000 000",
-      email: "davidsonjose313@gmail.com",
-      kyc: "KYC 3",
-      date: "09/04/2023",
-      color: "red",
-      avater: "AB",
-      userid: "gtyueiwoos",
-      type: "Receive",
-      status: "success",
-      address: "ipayex.eth",
-      fee: "0.034",
-      senderid: "hsjjkajsss",
-      provider: "Meta App",
-      role: "UI/UX Designer",
-      ip: "192.168.0.0.1",
-      department: "engineering",
-    },
-    // {
-    //   username: "Obiabo",
-    //   phone: "(234) 900 000 000",
-    //   email: "resmente313@gmail.com",
-    //   kyc: "KYC 3",
-    //   date: "09/10/2023",
-    //   color: "red",
-    //   avater: "DA",
-    //   userid: "dtryuiiopw",
-    //   type: "Send",
-    //   status: "pending",
-    //   address: "ipayex.eth",
-    //   fee: "0.034",
-    //   senderid: "hsjjkajsss",
-    //   provider: "Metroleam res",
-    //   ip: "192.168.0.0.1"
-    // },
-  ];
+  useEffect(() => {
+    getAdminUsers({ setLoading, setMessage });
+  }, []);
+
+  console.log(alladmins);
   return (
     <div className="">
       <HeaderWidget title="Manage Admin" />
@@ -114,7 +101,7 @@ function ManagerUser() {
           setShow2={setShow}
           data={data}
           columns={columns}
-          userdetails={userdetails}
+          userdetails={alladmins}
         />
       </div>
     </div>

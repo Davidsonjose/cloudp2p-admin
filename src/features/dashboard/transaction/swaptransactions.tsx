@@ -1,46 +1,77 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SwapTransaction from "@/components/table/transactions/swaptransaction";
 import HeaderWidget from "@/components/widgets/HeaderWidget";
 import SendPopup from "./popupsendandreceive";
+import {
+  getAllSwapTrasactions,
+  getAllTransactions,
+} from "@/functions/handler/user/transactions";
+import LoadingSpinner from "@/layouts/loadingSpinner";
+import { useSelector } from "react-redux";
+import { selectAllSwapTransactions } from "@/features/auth/api/transactions";
+import moment from "moment";
+import Image from "next/image";
 function SwapTransactions() {
   const [show, setShow] = useState(false);
   const [data, setData] = useState<any>(null);
-
+  const [loading, setLoading] = useState(false);
   const handleDisable = (dat: any) => {
     setShow(!show);
     setData(dat);
   };
+  const alltransactions = useSelector(selectAllSwapTransactions);
 
   const columns = [
     {
-      name: "User ID",
+      name: "User Pay ID",
       selector: (row: any) => (
         <div className="flex items-center space-x-2 w-[300px]">
-          <div
-            className={`bg-${row.color}-600 h-[26px] w-[26px]  rounded-full flex justify-center items-center`}
-          >
-            <h3 className="text-white text-center text-[10px] font-bold">
-              {row.avater}
-            </h3>
-          </div>
-          <p className="font-semibold text-[10px] uppercase">{row.userid}</p>
+          <Image
+            src={row.user.profileImageUrl}
+            alt="profile img"
+            height={27}
+            width={27}
+            className="rounded-full"
+          />
+          <p className="font-semibold text-[10px] uppercase">{row.user.uid}</p>
         </div>
       ),
       sortable: true,
     },
     {
       name: "Pair",
-      selector: (row: any) => row.pair,
+      selector: (row: any) => (
+        <p>
+          {row.baseAsset.asset.symbol}/{row.quoteAsset.asset.symbol}
+        </p>
+      ),
+    },
+
+    {
+      name: "Amount",
+      selector: (row: any) => (
+        <div className="flex items-center space-x-2 w-[300px]">
+          <p className="font-semibold text-[10px] uppercase">
+            {row.baseAmount} {row.baseAsset.asset.symbol} / {row.quoteAmount}{" "}
+            {row.quoteAsset.asset.symbol}
+          </p>
+        </div>
+      ),
+      sortable: true,
     },
     {
       name: "Status",
       selector: (row: any) => (
         <button
           className={`py-1 px-4 rounded ${
-            row.status === "success" && "bg-[#3AB83A1A] text-green-800"
+            row.status?.toLowerCase() === "completed" &&
+            "bg-[#3AB83A1A] text-green-800"
           } ${
-            row.status === "pending" &&
+            row.status?.toLowerCase() === "pending" &&
             "bg-[#F7931A1A] text-[#F7931A] text-[12px] font-semibold"
+          } ${
+            row.status?.toLowerCase() === "failed" &&
+            "bg-[#F7931A1A] text-red-600 text-[12px] font-semibold"
           } capitalize`}
         >
           {row.status}
@@ -48,16 +79,16 @@ function SwapTransactions() {
       ),
     },
     {
-      name: "Transaction ID",
-      selector: (row: any) => row.transactionid,
+      name: "Ref ID",
+      selector: (row: any) => row.refId,
     },
     {
-      name: "Fee",
-      selector: (row: any) => row.fee,
+      name: "Gas Fee",
+      selector: (row: any) => Number(row.providerFeeRemitted)?.toFixed(6),
     },
     {
       name: "Date",
-      selector: (row: any) => row.date,
+      selector: (row: any) => moment(row.createdAt).format("LL"),
     },
     {
       name: "Action",
@@ -75,48 +106,22 @@ function SwapTransactions() {
     },
   ];
 
-  const transactions = [
-    {
-      username: "Davidson",
-      phone: "(234) 900 000 000",
-      date: "09/04/2023",
-      color: "green",
-      avater: "AB",
-      userid: "gtyueiwoos",
-      status: "success",
-      fee: "0.034",
-      pair: "USDT / ETH",
-      transactionid: "TYpopoee",
-    },
-    {
-      username: "Obiabo",
-      phone: "(234) 900 000 000",
-      email: "resmente313@gmail.com",
-      kyc: "KYC 3",
-      date: "09/10/2023",
-      color: "red",
-      avater: "DA",
-      userid: "dtryuiiopw",
-      type: "Send",
-      status: "pending",
-      address: "ipayex.eth",
-      fee: "0.034",
-      senderid: "hsjjkajsss",
-      pair: "USDT / BNB",
-      transactionid: "TYpopoee",
-    },
-  ];
+  useEffect(() => {
+    getAllSwapTrasactions({ setLoading });
+  }, []);
 
+  console.log(alltransactions);
   return (
     <div className="">
       <HeaderWidget title="Swap Transactions" />
+      <LoadingSpinner loading={loading} />
       <div>
         <SwapTransaction
           show2={show}
           setShow2={setShow}
           data={data}
           columns={columns}
-          userdetails={transactions}
+          transactions={alltransactions}
         />
       </div>
     </div>

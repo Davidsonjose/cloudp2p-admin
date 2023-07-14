@@ -15,68 +15,36 @@ import { getAdminToken } from "@/common";
 import AnalyticWidget from "@/features/dashboard/analyticwidget";
 import AnalyticGraph from "@/features/dashboard/analyticgraph";
 import UserTable from "@/components/table/userdashboard";
-const barData = [
-  {
-    name: "Jan",
-    uv: 4000,
-
-    amt: 2400,
-  },
-  {
-    name: "Feb",
-    uv: 3000,
-
-    amt: 2210,
-  },
-  {
-    name: "Mar",
-    uv: 2000,
-
-    amt: 2290,
-  },
-  {
-    name: "Apr",
-    uv: 2780,
-
-    amt: 2000,
-  },
-  {
-    name: "May",
-    uv: 1890,
-
-    amt: 2181,
-  },
-  {
-    name: "Jun",
-    uv: 3890,
-
-    amt: 2181,
-  },
-];
-
+import { getAllUsers } from "@/functions/handler/user";
+import LoadingSpinner from "@/layouts/loadingSpinner";
+import { useSelector } from "react-redux";
+import { selectAllUsers } from "@/features/auth/api/users";
+import Image from "next/image";
+import moment from "moment";
 function Dashboard() {
-  const token = getAdminToken();
-
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const allusers = useSelector(selectAllUsers);
   const columns = [
     {
       name: "Name",
       selector: (row: any) => (
         <div className="flex items-center space-x-2 w-[300px]">
-          <div
-            className={`bg-${row.color}-600 h-[40px] w-[40px]  rounded-full flex justify-center items-center`}
-          >
-            <h3 className="text-white text-center text-[16px] font-bold">
-              {row.avater}
-            </h3>
-          </div>
-          <p className="font-bold w-[200px]">{row.username}</p>
+          <Image
+            src={row.profileImageUrl}
+            alt="profile img"
+            height={40}
+            width={40}
+            className="rounded-full"
+          />
+          <p className="font-bold w-[200px]">{row.firstName}</p>
         </div>
       ),
       sortable: true,
     },
     {
       name: "Phone number",
-      selector: (row: any) => row.phone,
+      selector: (row: any) => row.phoneNumber,
     },
     {
       name: "Email Address",
@@ -84,11 +52,11 @@ function Dashboard() {
     },
     {
       name: "KYC Level",
-      selector: (row: any) => row.kyc,
+      selector: (row: any) => row.kycLevel,
     },
     {
       name: "Date Registered",
-      selector: (row: any) => row.date,
+      selector: (row: any) => moment(row.createdAt).format("LL"),
     },
     {
       name: "Action",
@@ -122,6 +90,12 @@ function Dashboard() {
     },
   ];
 
+  useEffect(() => {
+    (async () => {
+      getAllUsers({ setLoading, setMessage });
+    })();
+  }, []);
+
   return (
     <div className="h-screen bg-[#FAFAFA] w-full px-6 lg:px-0 py-4 lg:py-0">
       <HeaderWidget title="Dashboard" />
@@ -134,9 +108,10 @@ function Dashboard() {
           Download Report
         </button>
       </div>
+      <LoadingSpinner loading={loading} />
       <AnalyticWidget />
       <AnalyticGraph />
-      <UserTable columns={columns} userdetails={userdetails} />
+      {/* <UserTable columns={columns} userdetails={allusers} /> */}
     </div>
   );
 }

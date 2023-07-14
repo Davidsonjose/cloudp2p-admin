@@ -5,7 +5,6 @@ import axios from "axios";
 import API_URL from "@/config";
 import { useDispatch, useSelector } from "react-redux";
 import { setAdminSession } from "@/common";
-import { setRefreshToken, setToken, setUser } from "../../../features/api/slice";
 import { CircularProgress } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import HeadWidget from "@/components/widgets/HeaderWidget";
@@ -19,7 +18,7 @@ function VerifyOtp() {
   const { register, handleSubmit, reset, setValue } = useForm();
   const [data, setData] = useState(null);
   const [remember, setRemember] = useState(false);
-
+  const [errorShow, setErrorShow] = useState(false);
   const handleLogin = (data: any) => {
     setLoading(true);
     setErr("");
@@ -96,7 +95,12 @@ function VerifyOtp() {
         <div className="flex-1">
           <div className="flex justify-center">
             <div className="w-[90%] md:w-[70%] lg:w-[430px] shadow-lg  bg-white justify-center">
-              <ToastMessage text={message} success={message} error={err} />
+              <ToastMessage
+                show={errorShow}
+                text={message}
+                success={message}
+                error={err}
+              />
               <div className="flex justify-center">
                 <form
                   className="w-[100%] md:w-[70%] lg:w-[100%]"

@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { Slide, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { ToastProps } from "@/interface";
-function SuccessToast({ text, error, success }: ToastProps) {
+function ToastMessage({ error, success, show }: ToastProps) {
   useEffect(() => {
     if (success) {
       toast.success(success, {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: false,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -22,7 +22,7 @@ function SuccessToast({ text, error, success }: ToastProps) {
     if (error) {
       toast.error(error, {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: false,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -33,22 +33,21 @@ function SuccessToast({ text, error, success }: ToastProps) {
     }
   }, [error]);
 
+  const toastContainerStyle = {
+    width: "500px", // Set the desired width here
+  };
+
   return (
-    <div>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+    <div className="z-[-1000] ">
+      {show && (
+        <ToastContainer
+          transition={Slide}
+          style={toastContainerStyle}
+          className="z-[100]"
+        ></ToastContainer>
+      )}
     </div>
   );
 }
 
-export default SuccessToast;
+export default ToastMessage;

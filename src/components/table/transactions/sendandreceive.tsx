@@ -90,7 +90,7 @@ function SendAndReceive(props: any) {
       </div>
       <DataTable
         columns={props.columns}
-        data={props.userdetails}
+        data={props.transactions}
         pagination
         fixedHeader
         fixedHeaderScrollHeight="450px"

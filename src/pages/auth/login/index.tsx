@@ -4,51 +4,41 @@ import Input from "@/components/form-control/input";
 import axios from "axios";
 import API_URL from "@/config";
 import { useDispatch, useSelector } from "react-redux";
-import { setAdminSession, } from "@/common";
-import { setRefreshToken, setToken, setUser } from "../../../features/api/slice";
+import { setAdminSession } from "@/common";
+import {
+  setRefreshToken,
+  setToken,
+  setUser,
+} from "../../../features/auth/api/slice";
 import { CircularProgress } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import HeadWidget from "@/components/widgets/HeaderWidget";
 import ToastMessage from "@/components/toast/ToastMessage";
+import { useRouter } from "next/navigation";
 function Login() {
   // const [email, setEmail] = useState("")
+  const router = useRouter();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [message2, setMessage2] = useState("");
   const [err, setErr] = useState("");
   const { register, handleSubmit, reset, setValue } = useForm();
-  // const [accesstoken, setAcessToken] = useState(null);
+  const [popshow, setPopShow] = useState(false);
   const [remember, setRemember] = useState(false);
   const handleLogin = (data: any) => {
     setLoading(true);
     setErr("");
     setMessage("");
-
-    // console.log(data);
-
-    // useEffect(() => {
-    //   setTimeout(
-    //     () =>
-    //       initemp({
-    //         name: 'John Holland',
-    //         email: 'abc@email.com',
-    //         mobile: '08923456790',
-    //       }),
-    //     1000,
-    //   )
-    // }, [])
-    // useEffect(() => {
-    //   reset(emp)
-    // }, [emp])
+    setPopShow(false);
 
     const info = {
       email: data.email,
-      password: data.password,
+      pwd: data.password,
     };
     const main = data;
     axios
-      .post(`${API_URL}/admin/login`, info)
+      .post(`${API_URL}/auth`, info)
       .then(({ data }) => {
         if (remember === true) {
           localStorage.setItem("remember", "yes");
@@ -57,29 +47,26 @@ function Login() {
         }
         setLoading(false);
         setMessage("Login Successful");
-        // setData(data)
-        // setAdmin(data?.payload[0]);
-        // setAcessToken(data?.accessToken);
-        // dispatch(
-        //   setRefreshToken({
-        //     user: data?.payload[0],
-        //     accessToken: data?.accessToken,
-        //     refreshtoken: data?.refreshToken,
-        //   })
-        // );
-        dispatch(setRefreshToken(data?.refreshToken));
-        dispatch(setToken(data?.accessToken));
-        dispatch(setUser(data?.payload[0]));
+        setPopShow(true);
+        console.log(data);
+        dispatch(setRefreshToken(data?.data?.refreshToken));
+        dispatch(setToken(data?.data?.accessToken));
+        dispatch(setUser(data?.data));
+        setAdminSession(
+          data?.data?.accessToken,
+          data?.data,
+          data?.data?.refreshToken
+        );
         setTimeout(() => {
-          //   setLoading(!loading);
-          setMessage2("Please wait while we redirect you");
+          router.push("/dashboard/admin");
         }, 1000);
 
         reset(data);
       })
       .catch((error) => {
         setLoading(false);
-        setErr(error?.response?.data?.message);
+        setPopShow(true);
+        setErr(error?.response?.data?.message[0]);
       });
   };
 
@@ -140,7 +127,7 @@ function Login() {
         <div className="flex-1">
           <div className="flex justify-center">
             <div className="w-[90%] md:w-[70%] lg:w-[430px] shadow-lg  bg-white justify-center">
-              <ToastMessage text={message} success={message} error={err}/>
+              <ToastMessage show={popshow} success={message} error={err} />
               <div className="flex justify-center">
                 <form
                   className="w-[100%] md:w-[70%] lg:w-[100%]"

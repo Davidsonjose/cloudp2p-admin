@@ -6,6 +6,7 @@ import DataTable from "react-data-table-component";
 import { SORT, Search } from "@/assets";
 import Image from "next/image";
 import { Fade } from "react-reveal";
+import FilterModal from "../modals/sortModal";
 
 interface mainLayoutTypes {
   children: JSX.Element;
@@ -23,8 +24,9 @@ function MainUser(props: any) {
       setShow(false);
     }
   };
+
   return (
-    <div className="" onClick={() => handleOverlay()}>
+    <div className="">
       <div className="mt-10 lg:flex lg:mx-0 mx-4 justify-between items-center mb-5">
         <div>
           <h3 className="font-bold text-lg pt-5 lg:pt-0">Users</h3>
@@ -48,11 +50,11 @@ function MainUser(props: any) {
           >
             {/* <i className="fa-solid fa-flask"></i> */}
             <Image src={SORT} alt="sort" />
-            <p className="text-[16px]">Sort</p>
+            <p className="text-[16px]">Filter</p>
           </button>
           {show && (
             <Fade>
-              <div className="bg-[#FFFFFF] w-[130px] absolute left-[50%] top-[100%] z-[50] rounded-lg">
+              {/* <div className="bg-[#FFFFFF] w-[130px] absolute left-[50%] top-[100%] z-[50] rounded-lg">
                 <div className="">
                   <p className=" px-3 pt-2 pb-2 text-[10px] font-semibold text-[#141414]">
                     Sort By
@@ -68,11 +70,12 @@ function MainUser(props: any) {
                     KYC Level 0-3
                   </p>
                 </div>
-              </div>
+              </div> */}
             </Fade>
           )}
         </div>
       </div>
+      <FilterModal show={show} setShow={setShow} />
       <DataTable
         columns={props.columns}
         data={props.userdetails}

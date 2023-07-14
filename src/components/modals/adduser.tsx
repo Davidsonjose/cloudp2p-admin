@@ -9,7 +9,8 @@ import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
 import { useForm } from "react-hook-form";
 import Input from "@/components/form-control/adduser";
-import {Fade} from "react-reveal"
+import { Fade } from "react-reveal";
+import { addNewAdminUser } from "@/functions/handler/user/admin";
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
     children: React.ReactElement<any, any>;
@@ -21,6 +22,9 @@ const Transition = React.forwardRef(function Transition(
 
 function AddUser({ open, setOpen }: any) {
   const { register, handleSubmit, reset, setValue } = useForm();
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState("");
+  const [message, setMessage] = React.useState("");
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -62,14 +66,24 @@ function AddUser({ open, setOpen }: any) {
     )
   );
 
-
   Select.displayName = "";
-  const handleCreation = () => {
-    return;
+
+  const handleCreation = (data: any) => {
+    const info = {
+      email: data?.email,
+      pwd: data?.password,
+      lastName: data?.lastname,
+      role: data?.role,
+      firstName: data?.firstname,
+    };
+    addNewAdminUser({
+      data: info,
+      setLoading: setLoading,
+      setMessage: setMessage,
+      setError: setError,
+    });
   };
 
-
-  
   return (
     <>
       <Dialog
@@ -80,7 +94,9 @@ function AddUser({ open, setOpen }: any) {
         aria-describedby="alert-dialog-slide-description"
         className="z-[200]"
       >
-        <DialogTitle className="text-center text-[#0A0E27]">{"Add User"}</DialogTitle>
+        <DialogTitle className="text-center text-[#0A0E27]">
+          {"Add User"}
+        </DialogTitle>
         <DialogContent className="w-[464px]">
           <DialogContentText id="alert-dialog-slide-description">
             <form className="" onSubmit={handleSubmit(handleCreation)}>

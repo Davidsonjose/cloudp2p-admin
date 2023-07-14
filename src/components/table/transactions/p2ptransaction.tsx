@@ -7,6 +7,7 @@ import { SORT, Search } from "@/assets";
 import Image from "next/image";
 import { Fade } from "react-reveal";
 import Popup2p from "@/features/dashboard/transaction/popup2p";
+import PopTrade from "@/features/dashboard/transaction/popTrades";
 interface mainLayoutTypes {
   children: JSX.Element;
 }
@@ -30,7 +31,7 @@ function P2pTable(props: any) {
     <div className="" onClick={() => handleOverlay()}>
       <div className="mt-10 lg:flex lg:mx-0 mx-4 justify-between items-center mb-5">
         <div>
-          <h3 className="font-bold text-lg pt-5 lg:pt-0">P2P Transactions</h3>
+          <h3 className="font-bold text-lg pt-5 lg:pt-0">{props.type}</h3>
         </div>
         <div className="lg:mt-0 mt-4 relative flex justify-between space-x-5">
           <div className="relative">
@@ -84,7 +85,7 @@ function P2pTable(props: any) {
       </div>
       <DataTable
         columns={props.columns}
-        data={props.userdetails}
+        data={props.trades}
         pagination
         fixedHeader
         fixedHeaderScrollHeight="450px"

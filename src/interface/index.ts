@@ -1,35 +1,36 @@
 export interface UserPayload {
-	firstName?: string;
-	lastName?: string;
-	id?: string | number;
-	photoUri?: string;
-	phoneNumber?: string | null;
-	email?: string;
+  firstName?: string;
+  lastName?: string;
+  id?: string | number;
+  photoUri?: string;
+  phoneNumber?: string | null;
+  email?: string;
 }
 
 export interface analyticsWidgetProps {
-	containerBackgroundColor: string;
-	iconBackground: string;
-	icon: any;
-	labelColor: string;
-	textvalueColor: string;
-	value: string | number | null;
-	label: string;
+  containerBackgroundColor: string;
+  iconBackground: string;
+  icon: any;
+  labelColor: string;
+  textvalueColor: string;
+  value: string | number | null;
+  label: string;
 }
 export interface headerProps {
-	title: string;
-	description?: string;
-	image?: string;
+  title: string;
+  description?: string;
+  image?: string;
 }
 export interface ToastProps {
-	text: string | null,
-	timeout?: number,
-	type?: string,
-	error: string | null,
-	success: string | null
+  text?: string | null;
+  timeout?: number;
+  type?: string;
+  error: string | null;
+  success: string | null;
+  show: boolean;
 }
 export interface AppBar {
-	user: any;
+  user: any;
 }
 
 // export interface ErrorToastProps {
@@ -38,8 +39,6 @@ export interface AppBar {
 // 	type: string
 // }
 
-
-
 export interface LoadingProps {
-	loading: boolean
+  loading: boolean;
 }

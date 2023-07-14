@@ -32,8 +32,6 @@ function ItemMenu(props: any) {
               onClick={() => {
                 setIsSideBarVisible("hidden");
                 setCurrent("");
-                console.log(props.data.title, current);
-                setCurrent(props.data.title);
               }}
             >
               {/* <img src={props.data.icon} alt="" className="w-4 text-white" /> */}

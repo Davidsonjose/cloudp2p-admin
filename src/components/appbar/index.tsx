@@ -6,25 +6,51 @@ import { BsBell } from "react-icons/bs";
 import { VscThreeBars } from "react-icons/vsc";
 import SearchBar from "./searchbar";
 import NotAndProfile from "./notandprofile";
+import { useSelector } from "react-redux";
+import { selectUser } from "@/features/auth/api/slice";
+import { useMediaQuery } from "@/hooks";
+import { useProSidebar } from "react-pro-sidebar";
+import { getAdmin } from "@/common";
 function AppBar({
   openSidebar,
-  user,
+  // user,
   handleNotification,
   view,
   setView,
-  handleClose,
   notification,
   loading,
-  setLoading,
+  breakPoint,
+  setBreakPoint,
 }: any) {
+  const user = getAdmin();
+  // const user = useSelector(selectUser);
+  const isMobileView = useMediaQuery("(max-width: 640px)");
+  const isTabletView = useMediaQuery("(max-width: 840px)");
+  const { collapseSidebar, toggleSidebar } = useProSidebar();
+  const BreakPoint = () => {
+    if (isMobileView || isTabletView) {
+      setBreakPoint(!breakPoint);
+      toggleSidebar();
+    } else {
+      collapseSidebar();
+    }
+  };
   return (
     <>
       <div className="z-40  bg-[#FFFFFF]  sticky top-6 lg:top-0 z-36  rounded-b-2xl h-5 lg:h-12 flex justify-between  items-center shadow-header  py-6 lg:py-10 px-6 lg:px-10">
-        <div className="shadow-header   block lg:hidden rounded-full p-2 bg-black cursor-pointer">
-          <VscThreeBars color="#ffffff" className="" onClick={openSidebar} />
+        <div className="flex items-center space-x-1">
+          {isMobileView && (
+            <div
+              onClick={() => BreakPoint()}
+              className="bg-[#17193F] cursor-pointer h-[40px] flex justify-center items-center w-[40px] rounded-full"
+            >
+              <i className="fa-solid text-white fa-bars  "></i>
+            </div>
+          )}
+          <h3 className="font-semibold text-sm">
+            Good Morning {user?.firstName}
+          </h3>
         </div>
-        <h3 className="font-semibold">Good Morning</h3>
-
 
         {/* Search section */}
         <SearchBar />

@@ -7,6 +7,8 @@ import { SORT, Search } from "@/assets";
 import Image from "next/image";
 import { Fade } from "react-reveal";
 import ManageAdminPop from "@/features/dashboard/user/manageadminpop";
+import { FaUserPlus } from "react-icons/fa";
+import AddUserPop from "../modals/addnewadmin";
 interface mainLayoutTypes {
   children: JSX.Element;
 }
@@ -14,7 +16,7 @@ interface mainLayoutTypes {
 function ManageUsert(props: any) {
   const { show2, setShow2, data, setData } = props;
   const [show, setShow] = useState(false);
-
+  const [addshow, setAddShow] = useState(false);
   const handleSort = () => {
     setShow(!show);
   };
@@ -29,6 +31,13 @@ function ManageUsert(props: any) {
         <div>
           <h3 className="font-bold text-lg pt-5 lg:pt-0">Manage Users</h3>
         </div>
+        <button
+          onClick={() => setAddShow(true)}
+          className="bg-[#24286f] hover:bg-[#17193F] text-white font-bold py-2 px-4 rounded-full flex items-center transform transition-all duration-200 hover:scale-105"
+        >
+          <FaUserPlus className="mr-2" />
+          Add User
+        </button>
         <div className="lg:mt-0 mt-4 relative flex justify-between space-x-5">
           <div className="relative">
             <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
@@ -88,6 +97,7 @@ function ManageUsert(props: any) {
       />
       {show && <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>}
       {show2 && <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>}
+      <AddUserPop show={addshow} setShow={setAddShow} />
     </div>
   );
 }
