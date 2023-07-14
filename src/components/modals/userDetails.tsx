@@ -350,10 +350,11 @@ function UserDetailsPop({ show, setShow, datas }: any) {
           <ConfirmAction
             show={confirmShow}
             setShow={setConfirmShow}
-            children={ConfirmComponent()}
             setOk={handleConfirm}
             title={!datas?.active ? "Deactivate User" : "Activate User"}
-          />
+          >
+            <ConfirmComponent />
+          </ConfirmAction>
         </DialogContent>
       </Dialog>
     </>

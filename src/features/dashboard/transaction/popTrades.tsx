@@ -54,33 +54,33 @@ function PopTrade({ show, setShow, datas }: any) {
     }
   }, [error, message]);
 
-  const ConfirmComponent = () => {
-    return (
-      <div>
-        {!datas?.active ? (
-          <>
-            <p>
-              You are about to deactivate a offer. please enter the reason
-              below.
-              <TextField
-                id="standard-basic"
-                label="Reason"
-                variant="standard"
-                className="w-[100%]"
-                onChange={(e) => setReason(e.target.value)}
-                value={reason}
-              />
-            </p>
-          </>
-        ) : (
-          <p>
-            You are about to reactivate a offer. To continue, confirm using the
-            button below.
-          </p>
-        )}
-      </div>
-    );
-  };
+  // const ConfirmComponent = () => {
+  //   return (
+  //     <div>
+  //       {!datas?.active ? (
+  //         <>
+  //           <p>
+  //             You are about to deactivate a offer. please enter the reason
+  //             below.
+  //             <TextField
+  //               id="standard-basic"
+  //               label="Reason"
+  //               variant="standard"
+  //               className="w-[100%]"
+  //               onChange={(e) => setReason(e.target.value)}
+  //               value={reason}
+  //             />
+  //           </p>
+  //         </>
+  //       ) : (
+  //         <p>
+  //           You are about to reactivate a offer. To continue, confirm using the
+  //           button below.
+  //         </p>
+  //       )}
+  //     </div>
+  //   );
+  // };
 
   const handleConfirm = () => {
     setError("");
@@ -356,13 +356,13 @@ function PopTrade({ show, setShow, datas }: any) {
             </div>
           </div>
 
-          <ConfirmAction
+          {/* <ConfirmAction
             show={confirmShow}
             setShow={setConfirmShow}
             children={ConfirmComponent()}
             setOk={handleConfirm}
             title={!datas?.active ? "Deactivate Offer" : "Activate Offer"}
-          />
+          /> */}
         </DialogContent>
       </Dialog>
       {show && <Fade></Fade>}

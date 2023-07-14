@@ -61,21 +61,21 @@ function Popup2p({ show, setShow, datas }: any) {
         {!datas?.active ? (
           <>
             <p>
-              You are about to deactivate a offer. please enter the reason
+              You are about to deactivate an offer. Please enter the reason
               below.
-              <TextField
-                id="standard-basic"
-                label="Reason"
-                variant="standard"
-                className="w-[100%]"
-                onChange={(e) => setReason(e.target.value)}
-                value={reason}
-              />
             </p>
+            <TextField
+              id="standard-basic"
+              label="Reason"
+              variant="standard"
+              className="w-[100%]"
+              onChange={(e) => setReason(e.target.value)}
+              value={reason}
+            />
           </>
         ) : (
           <p>
-            You are about to reactivate a offer. To continue, confirm using the
+            You are about to reactivate an offer. To continue, confirm using the
             button below.
           </p>
         )}
@@ -335,10 +335,11 @@ function Popup2p({ show, setShow, datas }: any) {
           <ConfirmAction
             show={confirmShow}
             setShow={setConfirmShow}
-            children={ConfirmComponent()}
             setOk={handleConfirm}
             title={!datas?.active ? "Deactivate Offer" : "Activate Offer"}
-          />
+          >
+            <ConfirmComponent />
+          </ConfirmAction>
         </DialogContent>
       </Dialog>
       {show && <Fade></Fade>}
